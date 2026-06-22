@@ -187,6 +187,69 @@
       .gallery-item:first-child { grid-row: auto; }
       .nav-links { display: none; }
     }
+
+    /* BLOG */
+    #blog { background: var(--navy); }
+    .blog-post {
+      max-width: 780px;
+      margin: 0 auto;
+    }
+    .blog-meta {
+      font-size: 0.68rem;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--gold);
+      opacity: 0.7;
+      margin-bottom: 2.5rem;
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+    .blog-meta::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: rgba(201,168,76,0.2);
+    }
+    .blog-body {
+      font-size: 1rem;
+      font-weight: 300;
+      line-height: 1.95;
+      color: var(--text-light);
+    }
+    .blog-body p { margin-bottom: 1.4rem; }
+    .blog-body h2 {
+      font-family: var(--font-display);
+      font-size: clamp(1.4rem, 3vw, 2rem);
+      font-weight: 300;
+      color: var(--white);
+      margin: 3rem 0 1rem;
+      padding-top: 1rem;
+      border-top: 1px solid rgba(201,168,76,0.15);
+    }
+    .blog-body hr {
+      border: none;
+      border-top: 1px solid rgba(201,168,76,0.15);
+      margin: 2.5rem 0;
+    }
+    .blog-body strong { color: var(--cream); font-weight: 400; }
+    .blog-body em { color: var(--gold-light); font-style: italic; }
+    .blog-cta-inline {
+      display: inline-block;
+      margin-top: 2rem;
+      padding: 0.9rem 2.4rem;
+      background: var(--gold);
+      color: var(--navy);
+      font-family: var(--font-body);
+      font-size: 0.72rem;
+      font-weight: 500;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      text-decoration: none;
+      transition: background 0.25s, transform 0.2s;
+    }
+    .blog-cta-inline:hover { background: var(--gold-light); transform: translateY(-2px); }
+
   </style>
 </head>
 <body>
@@ -198,7 +261,7 @@
     <li><a href="#about">About</a></li>
     <li><a href="#services">Services</a></li>
     <li><a href="#gallery">Gallery</a></li>
-    <li><a href="#contact">Contact</a></li>
+    <li><a href="blog.html">Blog</a></li><li><a href="#contact">Contact</a></li>
   </ul>
 </nav>
 
@@ -269,6 +332,84 @@
     <div class="gallery-item">
       <img src="https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?w=800&q=80" alt="Adventure" style="width:100%;height:100%;object-fit:cover;"/>
       <div class="gallery-overlay"><p>Adventure</p></div>
+    </div>
+  </div>
+</section>
+
+
+<!-- BLOG -->
+<section id="blog">
+  <div class="blog-post">
+    <p class="section-eyebrow">From the Atlas</p>
+    <h2 class="section-title">Welcome to Traveling the Atlas —<br><em>Here's the Story Behind It</em></h2>
+    <div class="blog-meta">By Krystal &nbsp;·&nbsp; Traveling the Atlas LLC</div>
+
+    <div class="blog-body">
+
+      <p>Travel has always been part of who I am—even when life made it impossible to travel the way I dreamed.</p>
+
+      <p>I had my kids young.</p>
+
+      <p>And if you know anything about being a young single parent, you know that big travel dreams get put on a shelf for a while. Not forever—just until the timing makes a little more sense. So instead of grand international adventures, we did small ones. Road trips. Weekend getaways. Little pockets of the U.S. that we could explore together on a budget and a prayer.</p>
+
+      <p>And honestly? I loved every single one of them.</p>
+
+      <p>Something about loading up the car and heading somewhere new—even somewhere small—lit me up in a way that nothing else really did. I filed that feeling away and kept going.</p>
+
+      <hr/>
+
+      <h2>The Trips Got Bigger</h2>
+
+      <p>As the years went on, the kids got older, and so did our adventures. Better trips. More beautiful places. Stunning scenery and exciting experiences that went way beyond what those early road trips looked like. We were building something without even realizing it—a family full of stories, and a version of me that was slowly figuring out what I was meant to do.</p>
+
+      <p>Then the kids grew up.</p>
+
+      <p>And I went all in.</p>
+
+      <hr/>
+
+      <h2>Peru Changed Everything</h2>
+
+      <p>I just got back from Peru, and I need to tell you something most people don't know: Peru is one of the most remarkably diverse destinations on the planet. We're talking desert, mountains, beaches, and rainforest—all in one country. Most people picture Machu Picchu and stop there. I experienced all of it.</p>
+
+      <p>By the time my trip came to an end, something clicked. I realized I hadn't simply visited Peru—I had experienced it in a way that most travelers never do. Every destination, every excursion, and every hidden gem had been intentionally woven together to create an immersive journey. That's when I knew this wasn't just something I loved doing for myself—it was something I needed to create for others.</p>
+
+      <hr/>
+
+      <h2>This Was Never Just a Hobby</h2>
+
+      <p>I've spent a lot of time in Mexico—my favorite being the Yucatán, which is in a category all its own. I've explored the islands, including the breathtaking Saint Lucia. I've wandered through Panama and across South America. And I've had some absolutely incredible stays at resorts and all-inclusives where the only decision I had to make was which pool to sit by—and honestly, sometimes that's exactly what you need.</p>
+
+      <p>Through all of it, I've been quietly doing what comes naturally to me—finding the small, off-the-beaten-path places that go the extra mile. Seeking out luxury stays where every detail is just right. Relaxing into beautiful all-inclusives where everything is taken care of. Planning the kind of epic adventures that you'll talk about for the rest of your life.</p>
+
+      <p>I've learned that luxury looks different for everyone. For some, it's waking up in a five-star resort where every detail is taken care of. For others, it's wandering local markets, taking a cooking class with a family that's been doing it for generations, or hiking to a place that leaves you speechless. Neither is better than the other—they're simply different ways to experience the world. That's what I love helping people discover.</p>
+
+      <p>For me, travel has never been about checking countries off a list. It's about the feeling of stepping somewhere new, hearing a language you don't understand, tasting food you'll crave long after you get home, and realizing how much bigger the world really is. Those moments stay with you. They change you. That's why I keep going back.</p>
+
+      <p>When I started telling a few friends what I was thinking—starting a travel agency and becoming a travel advisor—they hyped me up immediately. Honestly, I'm not sure I needed much convincing. Something about it just felt like the most obvious next step I'd somehow been circling my whole life.</p>
+
+      <p>I'm still not sure if this passion built up gradually over decades of small trips and big dreams, or if I was simply born this way and just needed time to realize it.</p>
+
+      <p>Either way, I'm here.</p>
+
+      <p>And I couldn't be more excited about it.</p>
+
+      <hr/>
+
+      <h2>What Traveling the Atlas Is All About</h2>
+
+      <p>Traveling the Atlas exists because I believe everyone deserves a trip that tells a story.</p>
+
+      <p>Maybe that's a stunning all-inclusive where you unplug completely and let someone else handle every detail. Maybe it's a hidden gem destination most people will never find. Maybe it's an adventure that pushes you in the best possible way, or a luxury experience that makes every moment feel intentional and special.</p>
+
+      <p>No two travelers are alike, and I don't believe their vacations should be either. Whether you're dreaming of complete relaxation, a once-in-a-lifetime adventure, or something in between, I believe your trip should feel like it was designed just for you—because it will be.</p>
+
+      <p>That's what I do.</p>
+
+      <p><strong>That's what I love to do.</strong></p>
+
+      <a href="#contact" class="blog-cta-inline">Let's Start Planning &rarr;</a>
+
     </div>
   </div>
 </section>
