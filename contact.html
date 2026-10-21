@@ -271,6 +271,8 @@ footer{background:var(--deep);color:rgba(255,255,255,.6);padding:72px 0 40px;fon
 .form-side ul{list-style:none;margin:1.6rem 0 0;padding:0}
 .form-side li{padding:.7rem 0 .7rem 1.2rem;position:relative;border-bottom:1px solid rgba(13,27,42,.08)}
 .form-side li::before{content:"";position:absolute;left:0;top:1.3em;width:7px;height:1px;background:var(--gold)}
+.trip-ask{background:var(--deep);color:var(--white);padding:18px 22px;margin:0 0 1.4rem;border-left:2px solid var(--gold);font-size:.98rem}
+.trip-ask strong{font-family:var(--serif);font-size:1.25rem;font-weight:500;color:var(--gold-soft);display:block;margin:.2rem 0}
 .form-card{background:var(--white);border-top:2px solid var(--gold);box-shadow:0 30px 60px -30px rgba(13,27,42,.25)}
 .form-card iframe{display:block;width:100%;height:1500px;border:0}
 .form-fallback{padding:18px 24px;font-size:.88rem;border-top:1px solid rgba(13,27,42,.08);margin:0}
@@ -298,6 +300,7 @@ footer{background:var(--deep);color:rgba(255,255,255,.6);padding:72px 0 40px;fon
     <ul class="menu" id="menu">
       <li><a href="about.html">ABOUT</a></li>
       <li><a href="services.html">SERVICES</a></li>
+      <li><a href="trips.html">TRIPS</a></li>
       <li><a href="gallery.html">GALLERY</a></li>
       <li><a href="blog.html">JOURNAL</a></li>
       <li><a class="btn" href="contact.html" aria-current="page">START PLANNING</a></li>
@@ -366,6 +369,7 @@ footer{background:var(--deep);color:rgba(255,255,255,.6);padding:72px 0 40px;fon
     <div class="form-side">
       <p class="label">Start your inquiry</p>
       <h2 class="reveal">A few details, and I'll take it from there.</h2>
+      <p class="trip-ask" id="trip-ask" hidden></p>
       <p class="reveal d1">It only takes a few minutes. The more you share about how you like to travel, the better your first proposal will be.</p>
       <ul class="reveal d2">
         <li>Where you're thinking of going, or simply the feeling you want</li>
@@ -393,6 +397,7 @@ footer{background:var(--deep);color:rgba(255,255,255,.6);padding:72px 0 40px;fon
       <ul class="f-links">
         <li><a href="about.html">ABOUT</a></li>
         <li><a href="services.html">SERVICES</a></li>
+      <li><a href="trips.html">TRIPS</a></li>
         <li><a href="gallery.html">GALLERY</a></li>
         <li><a href="blog.html">JOURNAL</a></li>
         <li><a href="contact.html">CONTACT</a></li>
@@ -425,6 +430,8 @@ footer{background:var(--deep);color:rgba(255,255,255,.6);padding:72px 0 40px;fon
   var io=new IntersectionObserver(function(entries){
     entries.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add('on'); io.unobserve(e.target); } });
   }, {threshold:.12, rootMargin:'0px 0px -6% 0px'});
+  var trip=new URLSearchParams(location.search).get('trip');
+  if(trip){ var t=document.getElementById('trip-ask'); t.hidden=false; t.innerHTML='You\'re asking about<strong></strong>Mention it in the form and I\'ll start there.'; t.querySelector('strong').textContent=trip.slice(0,120); }
   document.querySelectorAll('.reveal,#steps').forEach(function(el){ io.observe(el); });
 })();
 </script>
