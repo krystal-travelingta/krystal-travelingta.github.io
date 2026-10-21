@@ -7,7 +7,7 @@
 <link rel="icon" type="image/png" href="favicon-32.png">
 <link rel="apple-touch-icon" href="apple-touch-icon.png">
 <title>Featured Trips | Traveling the Atlas</title>
-<meta name="description" content="Featured luxury trips and private departures from Abercrombie &amp; Kent and other partners Krystal Winchel trusts, ready to tailor with Virtuoso perks.">
+<meta name="description" content="Featured luxury trips and private departures hand-picked by travel advisor Krystal Winchel, ready to tailor with Virtuoso perks.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Lato:wght@300;400;700&family=Montserrat:wght@400;500;600&display=swap" rel="stylesheet">
@@ -328,7 +328,7 @@ footer{background:var(--deep);color:rgba(255,255,255,.6);padding:72px 0 40px;fon
     </section>
     <section class="colls-wrap" id="colls-sec">
       <h2 class="sec-h">Browse full collections</h2>
-      <p class="sec-p">Dozens of ready-to-book trips from partners I trust, always up to date. See one you love? I'll tailor it and add your perks.</p>
+      <p class="sec-p">Dozens more ready-to-book trips from partners I trust. Tell me what catches your eye and I'll send you the full itinerary, tailored with your perks.</p>
       <div class="colls" id="colls"></div>
     </section>
     <p class="note">Prices are per person, based on double occupancy, and subject to change and availability. Ask Krystal for current pricing and dates.</p>
@@ -413,17 +413,16 @@ var LOCAL_CSV_URL = "data/trips.csv";
         '<div class="t-body"><p class="t-meta">'+meta+'</p><h3>'+esc(t.title)+'</h3><p class="t-desc">'+esc(t.description)+'</p>'+
         '<div class="t-foot">'+(t.price?'<p class="t-price"><small>FROM</small>'+esc(t.price)+'<small>PER PERSON</small></p>':'')+
         '<div class="t-btns"><a class="btn btn-gold" href="'+ask(t.title)+'">PLAN THIS WITH KRYSTAL</a>'+
-        (link?'<a class="t-link" href="'+esc(link)+'" target="_blank" rel="noopener">SEE THE FULL ITINERARY</a>':'')+'</div></div></div></article>';
+        '</div></div></div></article>';
     }).join('');
     document.getElementById('picks-sec').style.display = picks.length ? '' : 'none';
     document.getElementById('colls').innerHTML = colls.map(function(t){
       var img=safeUrl(t.photo), link=safeUrl(t.itinerary_link);
       var regions=(t.regions||'').split('|').map(function(r){ return esc(r.trim()).toUpperCase(); }).filter(Boolean).join(' &nbsp;|&nbsp; ');
       return '<article class="coll"><div class="c-photo">'+(img?'<img src="'+esc(img)+'" alt="" loading="lazy">':'')+'</div>'+
-        '<div class="c-body"><p class="t-meta">'+esc(t.partner).toUpperCase()+'</p><h3>'+esc(t.title)+'</h3><p class="t-desc">'+esc(t.description)+'</p>'+
+        '<div class="c-body"><p class="t-meta">'+(t.partner?esc(t.partner).toUpperCase():'TRUSTED PARTNER COLLECTION')+'</p><h3>'+esc(t.title)+'</h3><p class="t-desc">'+esc(t.description)+'</p>'+
         (regions?'<p class="regions">'+regions+'</p>':'')+
-        '<div class="t-btns row">'+(link?'<a class="btn btn-gold" href="'+esc(link)+'" target="_blank" rel="noopener">BROWSE THE COLLECTION</a>':'')+
-        '<a class="t-link" href="'+ask(t.partner+' '+t.title)+'">ASK KRYSTAL</a></div></div></article>';
+        '<div class="t-btns row"><a class="btn btn-gold" href="'+ask(t.title)+'">EXPLORE THIS COLLECTION WITH KRYSTAL</a></div></div></article>';
     }).join('');
     document.getElementById('colls-sec').style.display = colls.length ? '' : 'none';
     var io=new IntersectionObserver(function(es){ es.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add('on'); io.unobserve(e.target); } }); },{threshold:.1});
