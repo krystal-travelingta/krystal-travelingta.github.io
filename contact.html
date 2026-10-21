@@ -204,6 +204,7 @@ footer{background:var(--deep);color:rgba(255,255,255,.6);padding:72px 0 40px;fon
 .d1{transition-delay:.15s}.d2{transition-delay:.3s}.d3{transition-delay:.45s}
 
 /* Responsive */
+@media (max-width:1120px){.menu{position:fixed;inset:0;background:var(--deep);flex-direction:column;justify-content:center;gap:30px;opacity:0;pointer-events:none;transition:opacity .5s var(--ease)}.menu.open{opacity:1;pointer-events:auto}.menu a{font-size:.95rem}.toggle{display:block;position:relative;z-index:60}}
 @media (max-width:960px){
   .menu{position:fixed;inset:0;background:var(--deep);flex-direction:column;justify-content:center;gap:30px;opacity:0;pointer-events:none;transition:opacity .5s var(--ease)}
   .menu.open{opacity:1;pointer-events:auto}
