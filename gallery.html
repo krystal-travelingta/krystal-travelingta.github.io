@@ -1,0 +1,473 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" href="favicon.ico" sizes="any">
+<link rel="icon" type="image/png" href="favicon-32.png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<title>Gallery | Traveling the Atlas</title>
+<meta name="description" content="A gallery of luxury and bucket-list travel inspiration from Traveling the Atlas: Peru, Japan, safari, Egypt, Europe, Mexico and the Caribbean.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Lato:wght@300;400;700&family=Montserrat:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --deep:#0D1B2A; --navy:#1F345D; --gold:#C8A24B; --gold-soft:#DCC07F;
+  --cream:#F8F5F0; --charcoal:#333333; --white:#FFFFFF;
+  --serif:"Cormorant Garamond", Georgia, serif;
+  --sans:"Montserrat", system-ui, sans-serif;
+  --body:"Lato", system-ui, sans-serif;
+  --ease:cubic-bezier(.22,.61,.36,1);
+  --gutter:clamp(20px,5vw,72px);
+}
+*,*::before,*::after{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--cream);color:var(--charcoal);font:400 17px/1.7 var(--body);-webkit-font-smoothing:antialiased;overflow-x:hidden}
+img{max-width:100%;display:block}
+a{color:inherit}
+:focus-visible{outline:2px solid var(--gold);outline-offset:4px}
+.wrap{max-width:1240px;margin:0 auto;padding:0 var(--gutter)}
+h1,h2,h3{font-family:var(--serif);font-weight:500;line-height:1.08;margin:0;letter-spacing:-.01em}
+h2{font-size:clamp(2.2rem,4.6vw,3.9rem)}
+h3{font-size:clamp(1.5rem,2.2vw,1.9rem)}
+p{margin:0 0 1em}
+.label{font:500 .78rem/1.4 var(--sans);letter-spacing:.14em;color:var(--gold);margin:0 0 1.4rem}
+.btn{display:inline-block;font:600 .8rem/1 var(--sans);letter-spacing:.12em;text-decoration:none;padding:1.15rem 2rem;border:1px solid var(--gold);transition:background .5s var(--ease),color .5s var(--ease),border-color .5s var(--ease)}
+.btn-gold{background:var(--gold);color:var(--deep)}
+.btn-gold:hover{background:transparent;color:var(--gold)}
+.btn-line{color:var(--white);border-color:rgba(255,255,255,.45)}
+.btn-line:hover{border-color:var(--gold);color:var(--gold)}
+.btn-dark{color:var(--deep);border-color:var(--deep)}
+.btn-dark:hover{background:var(--deep);color:var(--cream)}
+
+/* Image slots: your photo loads over a rich fallback */
+.photo{position:relative;overflow:hidden;background:
+  radial-gradient(120% 90% at 20% 10%,rgba(200,162,75,.22),transparent 55%),
+  linear-gradient(160deg,var(--navy),var(--deep))}
+.photo img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+
+/* NAV */
+.nav{position:fixed;inset:0 0 auto;z-index:50;transition:background .6s var(--ease),padding .6s var(--ease),box-shadow .6s;padding:26px 0}
+.nav.solid{background:rgba(13,27,42,.94);backdrop-filter:blur(10px);padding:14px 0;box-shadow:0 1px 0 rgba(200,162,75,.25)}
+.nav .wrap{display:flex;align-items:center;justify-content:space-between;gap:24px}
+.brand{display:flex;align-items:center;gap:14px;text-decoration:none;color:var(--white)}
+.brand img{height:44px;width:auto}
+.brand span{font:500 1.35rem/1 var(--serif);letter-spacing:.04em}
+.menu{display:flex;gap:34px;list-style:none;margin:0;padding:0;align-items:center}
+.menu a{font:500 .78rem/1 var(--sans);letter-spacing:.14em;color:rgba(255,255,255,.85);text-decoration:none;position:relative;padding:6px 0}
+.menu a::after{content:"";position:absolute;left:0;bottom:0;height:1px;width:100%;background:var(--gold);transform:scaleX(0);transform-origin:right;transition:transform .5s var(--ease)}
+.menu a:hover::after{transform:scaleX(1);transform-origin:left}
+.menu .btn{padding:.9rem 1.4rem;color:var(--gold)}
+.menu .btn::after{display:none}
+.menu .btn:hover{background:var(--gold);color:var(--deep)}
+.toggle{display:none;background:none;border:0;color:var(--white);font-size:1.6rem;cursor:pointer}
+
+/* HERO */
+.hero{position:relative;min-height:100svh;display:flex;align-items:flex-end;color:var(--white);overflow:hidden;background:var(--deep)}
+.hero .photo{position:absolute;inset:0}
+.hero .photo img{animation:drift 26s var(--ease) forwards;transform-origin:60% 40%}
+@keyframes drift{from{transform:scale(1.14)}to{transform:scale(1)}}
+.hero::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(13,27,42,.45) 0%,rgba(13,27,42,0) 65%),linear-gradient(180deg,rgba(13,27,42,.55) 0%,rgba(13,27,42,.15) 35%,rgba(13,27,42,.88) 100%)}
+.graticule{position:absolute;inset:0;width:100%;height:100%;z-index:1;pointer-events:none;opacity:.55}
+.graticule path{fill:none;stroke:var(--gold);stroke-width:.6;stroke-dasharray:2400;stroke-dashoffset:2400;animation:draw 4.5s var(--ease) forwards}
+.graticule path:nth-child(2){animation-delay:.25s}.graticule path:nth-child(3){animation-delay:.5s}
+.graticule path:nth-child(4){animation-delay:.75s}.graticule path:nth-child(5){animation-delay:1s}
+.graticule path:nth-child(6){animation-delay:1.25s}.graticule path:nth-child(7){animation-delay:1.5s}
+@keyframes draw{to{stroke-dashoffset:0}}
+.hero .wrap{position:relative;z-index:2;width:100%;padding-top:140px;padding-bottom:clamp(64px,11vh,120px)}
+.hero h1{font-size:clamp(2.7rem,6.2vw,5.6rem);font-weight:400;max-width:17ch}
+.rise{display:block;overflow:hidden;padding-bottom:.06em}
+.rise > span{display:block;transform:translateY(110%);animation:rise 1.4s var(--ease) forwards}
+.rise:nth-child(2) > span{animation-delay:.25s}
+@keyframes rise{to{transform:none}}
+.hero .lede{max-width:34rem;font-size:1.15rem;font-weight:300;color:rgba(255,255,255,.88);margin:2rem 0 2.6rem;opacity:0;animation:fade 1.4s .9s var(--ease) forwards}
+.hero .label{opacity:0;animation:fade 1.2s .2s var(--ease) forwards}
+.hero .ctas{display:flex;gap:16px;flex-wrap:wrap;opacity:0;animation:fade 1.2s 1.2s var(--ease) forwards}
+@keyframes fade{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+.scroll-cue{position:absolute;right:var(--gutter);bottom:clamp(64px,11vh,120px);z-index:2;width:1px;height:90px;background:rgba(255,255,255,.2);overflow:hidden}
+.scroll-cue::after{content:"";position:absolute;left:0;top:-40%;width:1px;height:40%;background:var(--gold);animation:cue 2.6s var(--ease) infinite}
+@keyframes cue{to{top:100%}}
+
+/* SOMEDAY: the signature moment */
+.someday{padding:clamp(100px,14vw,180px) 0;text-align:center;background:var(--cream)}
+.someday .line{font:400 clamp(2.2rem,5.6vw,4.8rem)/1.15 var(--serif);color:var(--deep);margin:0 auto;max-width:18ch}
+.strike{position:relative;display:inline-block;color:var(--navy);transition:color 1s var(--ease) .9s}
+.strike::after{content:"";position:absolute;left:-4%;right:-4%;top:54%;height:2px;background:var(--gold);transform:scaleX(0);transform-origin:left;transition:transform 1s var(--ease) .4s}
+.date{display:block;font-style:italic;color:var(--gold);min-height:1.2em;margin-top:.15em}
+.date span{display:inline-block;opacity:0;transform:translateY(.4em);transition:opacity .5s var(--ease),transform .5s var(--ease)}
+.someday.on .strike{color:rgba(31,52,93,.38)}
+.someday.on .strike::after{transform:scaleX(1)}
+.someday .after{max-width:36rem;margin:3.2rem auto 0;font-size:1.1rem}
+.someday .after strong{font-family:var(--serif);font-size:1.35rem;font-weight:500;color:var(--deep);display:block;margin-bottom:.4rem}
+
+/* PILLARS */
+.pillars{background:var(--white);padding:clamp(90px,11vw,150px) 0}
+.pillars-head{display:grid;grid-template-columns:1.1fr 1fr;gap:clamp(32px,6vw,96px);align-items:end;margin-bottom:clamp(56px,7vw,96px)}
+.pillars-head h2{color:var(--deep)}
+.pillars-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(28px,4vw,64px)}
+.pillar{border-top:1px solid rgba(13,27,42,.15);padding-top:2rem;position:relative}
+.pillar::before{content:"";position:absolute;top:-1px;left:0;height:1px;width:100%;background:var(--gold);transform:scaleX(0);transform-origin:left;transition:transform 1.4s var(--ease)}
+.pillar.on::before{transform:scaleX(1)}
+.pillar:nth-child(2)::before{transition-delay:.2s}.pillar:nth-child(3)::before{transition-delay:.4s}
+.pillar h3{color:var(--deep);margin-bottom:.9rem}
+
+/* EXPERIENCES */
+.experiences{padding:clamp(90px,11vw,150px) 0;background:var(--cream)}
+.exp-head{max-width:40rem;margin-bottom:clamp(48px,6vw,80px)}
+.exp-head h2{color:var(--deep)}
+.exp-grid{display:grid;grid-template-columns:1.25fr 1fr;grid-template-rows:auto auto;gap:clamp(18px,2vw,28px)}
+.exp{position:relative;color:var(--white);text-decoration:none;min-height:420px;display:flex;align-items:flex-end}
+.exp:first-child{grid-row:span 2;min-height:780px}
+.exp .photo{position:absolute;inset:0}
+.exp .photo img{transition:transform 1.8s var(--ease)}
+.exp:hover .photo img{transform:scale(1.06)}
+.exp::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 30%,rgba(13,27,42,.55) 55%,rgba(13,27,42,.92))}
+.exp-body{position:relative;z-index:1;padding:clamp(26px,3vw,44px);max-width:30rem}
+.exp-body h3{font-size:clamp(1.8rem,2.8vw,2.5rem);margin-bottom:.6rem}
+.exp-body p{color:rgba(255,255,255,.85);margin:0}
+.exp-body .more{display:inline-block;margin-top:1.2rem;font:600 .74rem/1 var(--sans);letter-spacing:.14em;color:var(--gold);border-bottom:1px solid transparent;padding-bottom:4px;transition:border-color .5s}
+.exp:hover .more{border-color:var(--gold)}
+.also{margin-top:clamp(36px,4vw,56px);display:flex;flex-wrap:wrap;gap:12px 40px;align-items:baseline;border-top:1px solid rgba(13,27,42,.12);padding-top:28px}
+.also p{margin:0;font:500 .78rem/1.6 var(--sans);letter-spacing:.12em;color:var(--navy)}
+.also span{color:var(--charcoal)}
+
+/* PARALLAX QUOTE */
+.moment{background:var(--deep);position:relative;height:clamp(460px,80vh,760px);overflow:hidden;display:flex;align-items:center;justify-content:center;text-align:center;color:var(--white)}
+.moment .photo{position:absolute;inset:-18% 0;will-change:transform}
+.moment::after{content:"";position:absolute;inset:0;background:rgba(13,27,42,.5)}
+.moment blockquote{position:relative;z-index:1;margin:0;padding:0 var(--gutter);max-width:22ch;font:italic 400 clamp(2rem,4.8vw,4rem)/1.15 var(--serif)}
+.moment cite{display:block;margin-top:1.6rem;font:500 .78rem/1 var(--sans);letter-spacing:.14em;font-style:normal;color:var(--gold-soft)}
+
+/* ACCESS */
+.access{background:var(--deep);color:rgba(255,255,255,.82);padding:clamp(100px,12vw,160px) 0;position:relative;overflow:hidden}
+.access-grid{display:grid;grid-template-columns:1fr 1.15fr;gap:clamp(48px,7vw,120px);align-items:start}
+.access h2{color:var(--white)}
+.access .intro{margin-top:1.6rem;max-width:30rem}
+.perks{list-style:none;margin:0;padding:0}
+.perks li{display:grid;grid-template-columns:1fr auto;gap:24px;align-items:baseline;padding:1.5rem 0;border-bottom:1px solid rgba(200,162,75,.22)}
+.perks li:first-child{border-top:1px solid rgba(200,162,75,.22)}
+.perks h3{font-size:clamp(1.4rem,2vw,1.75rem);color:var(--white);font-weight:400}
+.perks small{font:500 .72rem/1.4 var(--sans);letter-spacing:.12em;color:var(--gold);text-align:right}
+.access .fine{margin-top:1.6rem;font-size:.85rem;color:rgba(255,255,255,.5)}
+
+/* PROCESS */
+.process{padding:clamp(90px,11vw,150px) 0;background:var(--white)}
+.process h2{color:var(--deep);max-width:16ch;margin-bottom:clamp(56px,7vw,90px)}
+.steps{display:grid;grid-template-columns:repeat(4,1fr);gap:clamp(24px,3vw,48px);list-style:none;margin:0;padding:0;position:relative}
+.steps::before{content:"";position:absolute;top:22px;left:0;right:0;height:1px;background:rgba(13,27,42,.12)}
+.steps::after{content:"";position:absolute;top:22px;left:0;right:0;height:1px;background:var(--gold);transform:scaleX(0);transform-origin:left;transition:transform 2.4s var(--ease)}
+.steps.on::after{transform:scaleX(1)}
+.step-num{width:45px;height:45px;border-radius:50%;background:var(--white);border:1px solid var(--gold);display:grid;place-items:center;font:500 1.1rem/1 var(--serif);color:var(--gold);position:relative;z-index:1;margin-bottom:1.8rem}
+.steps h3{color:var(--deep);margin-bottom:.6rem}
+.steps p{font-size:.98rem}
+
+/* KRYSTAL */
+.krystal{padding:clamp(90px,11vw,150px) 0;background:var(--cream)}
+.k-grid{display:grid;grid-template-columns:.9fr 1.1fr;gap:clamp(40px,7vw,110px);align-items:center}
+.k-photo{aspect-ratio:4/5;position:relative}
+.k-photo .photo{position:absolute;inset:0}
+.k-photo::before{content:"";position:absolute;inset:22px -22px -22px 22px;border:1px solid var(--gold);z-index:0}
+.k-photo .photo{z-index:1}
+.krystal h2{color:var(--deep);margin-bottom:1.6rem}
+.krystal .sig{font:italic 400 1.6rem/1 var(--serif);color:var(--navy);margin:0}
+.k-sign{display:flex;align-items:center;gap:28px;margin:2rem 0 2.2rem}
+.k-sign .badge{width:96px;height:96px}
+.k-photo .photo img{object-position:60% 20%}
+
+/* CLOSING */
+.closing{background:var(--navy);color:var(--white);text-align:center;padding:clamp(110px,13vw,180px) 0;position:relative;overflow:hidden}
+.closing h2{font-size:clamp(2.6rem,6vw,5.2rem);font-weight:400;max-width:14ch;margin:0 auto 1.6rem}
+.closing p{max-width:32rem;margin:0 auto 2.6rem;color:rgba(255,255,255,.8)}
+.closing .ctas{display:flex;gap:16px;justify-content:center;flex-wrap:wrap}
+.closing .ring{position:absolute;left:50%;top:50%;width:min(1100px,150vw);aspect-ratio:1;transform:translate(-50%,-50%);border:1px solid rgba(200,162,75,.14);border-radius:50%;animation:slowspin 120s linear infinite}
+.closing .ring::before{content:"";position:absolute;inset:12%;border:1px dashed rgba(200,162,75,.12);border-radius:50%}
+@keyframes slowspin{to{transform:translate(-50%,-50%) rotate(360deg)}}
+.closing .wrap{position:relative}
+
+/* FOOTER */
+footer{background:var(--deep);color:rgba(255,255,255,.6);padding:72px 0 40px;font-size:.88rem}
+.f-top{display:flex;justify-content:space-between;gap:40px;flex-wrap:wrap;align-items:flex-start;padding-bottom:40px;border-bottom:1px solid rgba(255,255,255,.08)}
+.f-top .brand span{font-size:1.5rem}
+.f-tag{font:italic 1.15rem/1.4 var(--serif);color:var(--gold-soft);margin-top:1rem}
+.f-links{display:flex;gap:28px;flex-wrap:wrap;list-style:none;margin:0;padding:0}
+.f-links a{text-decoration:none;font:500 .74rem/1 var(--sans);letter-spacing:.12em}
+.f-links a:hover{color:var(--gold)}
+.legal{padding-top:32px;font-size:.78rem;line-height:1.7;color:rgba(255,255,255,.45)}
+.legal .row{display:flex;gap:24px;align-items:center;flex-wrap:wrap;margin-bottom:1.2rem}
+.legal img{height:42px;width:auto}
+.legal a{text-decoration:none}.legal a:hover{color:var(--gold)}
+
+/* Scroll reveals */
+.reveal{opacity:0;transform:translateY(28px);transition:opacity 1.2s var(--ease),transform 1.2s var(--ease)}
+.reveal.on{opacity:1;transform:none}
+.d1{transition-delay:.15s}.d2{transition-delay:.3s}.d3{transition-delay:.45s}
+
+/* Responsive */
+@media (max-width:960px){
+  .menu{position:fixed;inset:0;background:var(--deep);flex-direction:column;justify-content:center;gap:30px;opacity:0;pointer-events:none;transition:opacity .5s var(--ease)}
+  .menu.open{opacity:1;pointer-events:auto}
+  .menu a{font-size:.95rem}
+  .toggle{display:block;position:relative;z-index:60}
+  .pillars-head,.access-grid,.k-grid{grid-template-columns:1fr}
+  .pillars-grid{grid-template-columns:1fr}
+  .exp-grid{grid-template-columns:1fr}
+  .exp:first-child{grid-row:auto;min-height:520px}
+  .exp{min-height:420px}
+  .steps{grid-template-columns:1fr 1fr;row-gap:48px}
+  .steps::before,.steps::after{display:none}
+  .k-photo{max-width:420px}
+}
+@media (max-width:560px){
+  body{font-size:16px}
+  .brand span{font-size:1.1rem}
+  .brand img{height:36px}
+  .steps{grid-template-columns:1fr}
+  .scroll-cue{display:none}
+  .perks li{grid-template-columns:1fr}
+  .perks small{text-align:left}
+  .k-photo::before{inset:14px -10px -14px 10px}
+}
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation:none!important;transition:none!important}
+  .rise > span,.hero .lede,.hero .label,.hero .ctas,.reveal{opacity:1!important;transform:none!important}
+  .graticule path{stroke-dashoffset:0}
+  .date span{opacity:1;transform:none}
+}
+</style>
+<style>
+/* Gallery */
+.g-hero{background:var(--deep);color:var(--white);padding:170px 0 clamp(60px,7vw,90px);position:relative;overflow:hidden}
+.g-hero .graticule{opacity:.3}
+.g-hero .wrap{position:relative;z-index:2}
+.g-hero h1{font-size:clamp(2.4rem,4.8vw,4.4rem);font-weight:400}
+.g-hero .lede{max-width:34rem;font-size:1.12rem;font-weight:300;color:rgba(255,255,255,.82);margin:1.6rem 0 0;opacity:0;animation:fade 1.4s .7s var(--ease) forwards}
+.g-hero .label{opacity:0;animation:fade 1.2s .1s var(--ease) forwards}
+
+.gallery{background:var(--cream);padding:clamp(48px,6vw,80px) 0 clamp(90px,11vw,140px)}
+.filters{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:clamp(32px,4vw,52px)}
+.filters button{font:600 .74rem/1 var(--sans);letter-spacing:.12em;padding:.95rem 1.3rem;background:transparent;color:var(--navy);border:1px solid rgba(13,27,42,.2);cursor:pointer;transition:background .4s var(--ease),color .4s var(--ease),border-color .4s var(--ease)}
+.filters button:hover{border-color:var(--gold)}
+.filters button[aria-pressed="true"]{background:var(--deep);color:var(--white);border-color:var(--deep)}
+.grid{columns:3 320px;column-gap:clamp(14px,1.6vw,22px)}
+.tile{break-inside:avoid;margin:0 0 clamp(14px,1.6vw,22px);position:relative;overflow:hidden;cursor:zoom-in;background:var(--navy);opacity:0;transform:translateY(24px);transition:opacity 1s var(--ease),transform 1s var(--ease)}
+.tile.on{opacity:1;transform:none}
+.tile.hide{display:none}
+.tile img{width:100%;height:auto;display:block;transition:transform 1.6s var(--ease),filter .8s var(--ease)}
+.tile:hover img,.tile:focus-visible img{transform:scale(1.05)}
+.tile figcaption{position:absolute;left:0;right:0;bottom:0;padding:44px 20px 16px;background:linear-gradient(180deg,transparent,rgba(13,27,42,.82));color:var(--white);font:italic 1.15rem/1.25 var(--serif);opacity:0;transform:translateY(8px);transition:opacity .6s var(--ease),transform .6s var(--ease)}
+.tile figcaption small{display:block;font:500 .66rem/1 var(--sans);letter-spacing:.14em;font-style:normal;color:var(--gold-soft);margin-top:.5rem}
+.tile:hover figcaption,.tile:focus-visible figcaption{opacity:1;transform:none}
+@media (hover:none){.tile figcaption{opacity:1;transform:none}}
+
+.lightbox{position:fixed;inset:0;z-index:100;background:rgba(10,20,32,.96);display:flex;align-items:center;justify-content:center;opacity:0;pointer-events:none;transition:opacity .5s var(--ease)}
+.lightbox.open{opacity:1;pointer-events:auto}
+.lightbox figure{margin:0;max-width:min(1200px,92vw);text-align:center}
+.lightbox img{max-width:100%;max-height:78vh;margin:0 auto;box-shadow:0 30px 80px rgba(0,0,0,.5);transform:scale(.97);transition:transform .6s var(--ease),opacity .35s var(--ease)}
+.lightbox.open img{transform:none}
+.lightbox figcaption{margin-top:1.2rem;color:var(--white);font:italic 1.5rem/1.3 var(--serif)}
+.lightbox figcaption small{display:block;margin-top:.5rem;font:500 .72rem/1 var(--sans);letter-spacing:.14em;font-style:normal;color:var(--gold)}
+.lb-btn{position:absolute;background:none;border:1px solid rgba(200,162,75,.5);color:var(--white);width:52px;height:52px;cursor:pointer;font-size:1.4rem;line-height:1;display:grid;place-items:center;transition:background .4s,border-color .4s}
+.lb-btn:hover{background:rgba(200,162,75,.15);border-color:var(--gold)}
+.lb-close{top:22px;right:22px}
+.lb-prev{left:22px;top:50%;transform:translateY(-50%)}
+.lb-next{right:22px;top:50%;transform:translateY(-50%)}
+.lb-count{position:absolute;top:36px;left:28px;font:500 .74rem/1 var(--sans);letter-spacing:.14em;color:rgba(255,255,255,.6)}
+
+.g-cta{background:var(--white);padding:clamp(80px,9vw,120px) 0;text-align:center}
+.g-cta h2{color:var(--deep);max-width:18ch;margin:0 auto 1.2rem}
+.g-cta p{max-width:32rem;margin:0 auto 2.2rem}
+
+@media (max-width:640px){
+  .lb-prev,.lb-next{top:auto;bottom:22px;transform:none}
+  .lb-prev{left:calc(50% - 64px)}.lb-next{right:calc(50% - 64px)}
+  .lightbox img{max-height:66vh}
+}
+@media (prefers-reduced-motion:reduce){.g-hero .lede,.g-hero .label{opacity:1!important}.tile{opacity:1;transform:none}}
+</style>
+</head>
+<body>
+
+<nav class="nav" id="nav" aria-label="Main">
+  <div class="wrap">
+    <a class="brand" href="index.html" aria-label="Traveling the Atlas home">
+      <img src="images/TA_NO_BACK_NO_PLANE.png" alt="" onerror="this.remove()">
+      <span>Traveling the Atlas</span>
+    </a>
+    <button class="toggle" id="toggle" aria-label="Open menu" aria-expanded="false" aria-controls="menu">&#9776;</button>
+    <ul class="menu" id="menu">
+      <li><a href="about.html">ABOUT</a></li>
+      <li><a href="services.html">SERVICES</a></li>
+      <li><a href="gallery.html" aria-current="page">GALLERY</a></li>
+      <li><a href="blog.html">JOURNAL</a></li>
+      <li><a class="btn" href="contact.html">START PLANNING</a></li>
+    </ul>
+  </div>
+</nav>
+
+<header class="g-hero">
+  <svg class="graticule" viewBox="0 0 1440 900" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+    <path d="M-40 640 C 300 560, 700 540, 1480 610"/>
+    <path d="M-40 460 C 340 400, 760 390, 1480 440"/>
+    <path d="M980 -20 C 900 260, 900 620, 1010 940"/>
+    <path d="M1180 -20 C 1130 280, 1130 600, 1200 940"/>
+  </svg>
+  <div class="wrap">
+    <p class="label">Gallery</p>
+    <h1>
+      <span class="rise"><span>Places worth crossing</span></span>
+      <span class="rise"><span>an ocean for.</span></span>
+    </h1>
+    <p class="lede">A few of the moments, views and tables that make a trip unforgettable. Tap any photo to see it full screen.</p>
+  </div>
+</header>
+
+<main class="gallery">
+  <div class="wrap">
+    <div class="filters" role="group" aria-label="Filter photos by region">
+      <button type="button" data-filter="all" aria-pressed="true">ALL</button>
+      <button type="button" data-filter="mexico" aria-pressed="false">MEXICO &amp; CARIBBEAN</button>
+      <button type="button" data-filter="south-america" aria-pressed="false">SOUTH AMERICA</button>
+      <button type="button" data-filter="europe" aria-pressed="false">EUROPE</button>
+      <button type="button" data-filter="africa" aria-pressed="false">AFRICA &amp; MIDDLE EAST</button>
+      <button type="button" data-filter="asia" aria-pressed="false">ASIA</button>
+    </div>
+
+    <div class="grid" id="grid">
+      <figure class="tile" data-region="europe" tabindex="0"><img src="images/villa.jpg" alt="Ivy-covered terrace of a cliffside villa overlooking the Mediterranean" loading="lazy"><figcaption>A cliffside villa terrace<small>MEDITERRANEAN</small></figcaption></figure>
+      <figure class="tile" data-region="africa" tabindex="0"><img src="images/gallery/lion.jpg" alt="Lion resting in a tree on safari in Tanzania" loading="lazy"><figcaption>Afternoon on safari<small>TANZANIA</small></figcaption></figure>
+      <figure class="tile" data-region="south-america" tabindex="0"><img src="images/gallery/huacachina.jpg" alt="Desert oasis of Huacachina surrounded by sand dunes" loading="lazy"><figcaption>The desert oasis<small>HUACACHINA, PERU</small></figcaption></figure>
+      <figure class="tile" data-region="asia" tabindex="0"><img src="images/gallery/kyoto.jpg" alt="Woman in a kimono walking toward a pagoda in Kyoto" loading="lazy"><figcaption>Evening in the old streets<small>KYOTO, JAPAN</small></figcaption></figure>
+      <figure class="tile" data-region="mexico" tabindex="0"><img src="images/celebration.jpg" alt="Private candlelit dinner cabana on the beach at dusk" loading="lazy" ><figcaption>Dinner for two on the sand<small>A PRIVATE BEACH DINNER</small></figcaption></figure>
+      <figure class="tile" data-region="africa" tabindex="0"><img src="images/gallery/egypt-balloons.jpg" alt="Hot air balloons over ancient ruins in Egypt at sunrise" loading="lazy"><figcaption>Sunrise by balloon<small>EGYPT</small></figcaption></figure>
+      <figure class="tile" data-region="south-america" tabindex="0"><img src="images/machu-picchu.jpg" alt="Aerial view of Machu Picchu in the Andes" loading="lazy"><figcaption>The lost city<small>MACHU PICCHU, PERU</small></figcaption></figure>
+      <figure class="tile" data-region="europe" tabindex="0"><img src="images/gallery/sea-view-lunch.jpg" alt="Restaurant tables by a window overlooking turquoise sea" loading="lazy"><figcaption>A table with a view<small>LUNCH BY THE SEA</small></figcaption></figure>
+      <figure class="tile" data-region="mexico" tabindex="0"><img src="images/moment.jpg" alt="Glass of red wine raised to the sunset over the sea" loading="lazy"><figcaption>Sunset, a glass of something good<small>AT SEA</small></figcaption></figure>
+      <figure class="tile" data-region="asia" tabindex="0"><img src="images/gallery/japan-pagoda.jpg" alt="Red pagoda framed by cherry blossoms at sunset in Japan" loading="lazy"><figcaption>Cherry blossom season<small>JAPAN</small></figcaption></figure>
+      <figure class="tile" data-region="africa" tabindex="0"><img src="images/gallery/zanzibar.jpg" alt="Two Maasai men walking along a white sand beach in Zanzibar" loading="lazy"><figcaption>White sand and turquoise water<small>ZANZIBAR</small></figcaption></figure>
+      <figure class="tile" data-region="europe" tabindex="0"><img src="images/greece.jpg" alt="Clear turquoise water in a quiet bay on a Greek island" loading="lazy"><figcaption>Water this clear<small>GREECE</small></figcaption></figure>
+      <figure class="tile" data-region="south-america" tabindex="0"><img src="images/gallery/alpacas.jpg" alt="Alpacas crossing a high plain in the Peruvian Andes" loading="lazy"><figcaption>High in the Andes<small>PERU</small></figcaption></figure>
+      <figure class="tile" data-region="mexico" tabindex="0"><img src="images/gallery/los-cabos.jpg" alt="Aerial view of a luxury resort with winding pools" loading="lazy"><figcaption>Resort life, from above<small>LOS CABOS, MEXICO</small></figcaption></figure>
+      <figure class="tile" data-region="africa" tabindex="0"><img src="images/gallery/dubai.jpg" alt="Camel on the beach with the Dubai skyline behind" loading="lazy"><figcaption>Old and new<small>DUBAI</small></figcaption></figure>
+      <figure class="tile" data-region="asia" tabindex="0"><img src="images/gallery/miyajima.jpg" alt="Red corridors of Itsukushima Shrine on Miyajima Island" loading="lazy"><figcaption>Itsukushima Shrine<small>MIYAJIMA, JAPAN</small></figcaption></figure>
+      <figure class="tile" data-region="europe" tabindex="0"><img src="images/gallery/ireland.jpg" alt="Ancient stone abbey ruins in green Irish countryside" loading="lazy"><figcaption>Centuries of stories<small>IRELAND</small></figcaption></figure>
+      <figure class="tile" data-region="africa" tabindex="0"><img src="images/gallery/cheetah.jpg" alt="Cheetah leaping from a tree onto the savanna" loading="lazy"><figcaption>The moment you wait for<small>ON SAFARI</small></figcaption></figure>
+      <figure class="tile" data-region="mexico" tabindex="0"><img src="images/hero.jpg" alt="Pink and orange clouds over a calm beach at sunset" loading="lazy"><figcaption>Golden hour<small>ON THE BEACH</small></figcaption></figure>
+      <figure class="tile" data-region="south-america" tabindex="0"><img src="images/safari.jpg" alt="Sunset over the sand dunes of Huacachina, Peru" loading="lazy"><figcaption>Sunset on the dunes<small>PERU</small></figcaption></figure>
+      <figure class="tile" data-region="asia" tabindex="0"><img src="images/gallery/narai-juku.jpg" alt="Wooden houses along the historic street of Narai-juku" loading="lazy"><figcaption>An old post town<small>NARAI-JUKU, JAPAN</small></figcaption></figure>
+      <figure class="tile" data-region="africa" tabindex="0"><img src="images/gallery/egypt-temple.jpg" alt="Ancient temple columns and statues in Egypt" loading="lazy"><figcaption>Where history stands tall<small>EGYPT</small></figcaption></figure>
+      <figure class="tile" data-region="europe" tabindex="0"><img src="images/gallery/champagne.jpg" alt="A glass of champagne raised over sparkling water" loading="lazy"><figcaption>A toast on the water<small>CHEERS</small></figcaption></figure>
+    </div>
+  </div>
+</main>
+
+<section class="g-cta">
+  <div class="wrap">
+    <h2 class="reveal">See something you've been meaning to see?</h2>
+    <p class="reveal d1">Tell me which one has been on your someday list, and I'll show you how to get there beautifully.</p>
+    <a class="btn btn-gold reveal d2" href="contact.html">START PLANNING</a>
+  </div>
+</section>
+
+<div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Photo viewer" aria-hidden="true">
+  <span class="lb-count" id="lb-count"></span>
+  <button class="lb-btn lb-close" id="lb-close" aria-label="Close">&times;</button>
+  <button class="lb-btn lb-prev" id="lb-prev" aria-label="Previous photo">&#8249;</button>
+  <figure><img id="lb-img" src="" alt=""><figcaption id="lb-cap"></figcaption></figure>
+  <button class="lb-btn lb-next" id="lb-next" aria-label="Next photo">&#8250;</button>
+</div>
+
+<footer>
+  <div class="wrap">
+    <div class="f-top">
+      <div>
+        <a class="brand" href="index.html"><span>Traveling the Atlas</span></a>
+        <p class="f-tag">Stop saving life for someday.</p>
+      </div>
+      <ul class="f-links">
+        <li><a href="about.html">ABOUT</a></li>
+        <li><a href="services.html">SERVICES</a></li>
+        <li><a href="gallery.html">GALLERY</a></li>
+        <li><a href="blog.html">JOURNAL</a></li>
+        <li><a href="contact.html">CONTACT</a></li>
+      </ul>
+    </div>
+    <div class="legal">
+      <div class="row">
+        <a href="https://www.virtuoso.com/about"><img src="images/gtn-virtuoso.png" alt="An independent affiliate of Gifted Travel Network" onerror="this.remove()"></a>
+        <span>Traveling the Atlas, LLC is an independent affiliate of Gifted Travel Network, a Virtuoso&reg; Member.</span>
+      </div>
+      <p>Within the United States, VIRTUOSO, the Globe Swirl Logo, SPECIALISTS IN THE ART OF TRAVEL, RETURN on LIFE, and ORCHESTRATE DREAMS are registered trademarks of Virtuoso, Ltd., and VIRTUOSO VOYAGES is a trademark of Virtuoso, Ltd. Virtuoso, Ltd. has a U.S. copyright registration for the Globe Swirl Logo, &copy; 2000. Outside of the U.S., these marks are the property of Virtuoso, Ltd., and the applicable marks are registered with numerous national trademark registries around the world. All rights reserved.</p>
+      <p><a href="terms.html">Terms &amp; Conditions</a> &nbsp;|&nbsp; <a href="privacy.html">Privacy Policy</a> &nbsp;|&nbsp; <a href="travel-info.html">Travel Information</a></p>
+      <p>&copy; 2026 Traveling the Atlas LLC &nbsp;|&nbsp; <a href="mailto:Krystal@travelingta.com">Krystal@travelingta.com</a> &nbsp;|&nbsp; <a href="tel:+18168095291">816.809.5291</a></p>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var nav=document.getElementById('nav');
+  function onScroll(){ nav.classList.toggle('solid', window.scrollY > 60); }
+  window.addEventListener('scroll', onScroll, {passive:true}); onScroll();
+  var toggle=document.getElementById('toggle'), menu=document.getElementById('menu');
+  toggle.addEventListener('click', function(){
+    var open=menu.classList.toggle('open');
+    toggle.setAttribute('aria-expanded', open);
+    toggle.innerHTML = open ? '&times;' : '&#9776;';
+    document.body.style.overflow = open ? 'hidden' : '';
+  });
+  menu.querySelectorAll('a').forEach(function(a){ a.addEventListener('click', function(){ if(menu.classList.contains('open')) toggle.click(); }); });
+
+  var io=new IntersectionObserver(function(entries){
+    entries.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add('on'); io.unobserve(e.target); } });
+  }, {threshold:.1, rootMargin:'0px 0px -4% 0px'});
+  var tiles=[].slice.call(document.querySelectorAll('.tile'));
+  tiles.forEach(function(t,i){ t.style.transitionDelay=(i%3)*0.12+'s'; io.observe(t); });
+  document.querySelectorAll('.reveal').forEach(function(el){ io.observe(el); });
+
+  // Filters
+  var buttons=[].slice.call(document.querySelectorAll('.filters button'));
+  buttons.forEach(function(b){
+    b.addEventListener('click', function(){
+      var f=b.getAttribute('data-filter');
+      buttons.forEach(function(x){ x.setAttribute('aria-pressed', x===b ? 'true':'false'); });
+      tiles.forEach(function(t,i){
+        var show = f==='all' || t.getAttribute('data-region')===f;
+        t.classList.remove('on'); t.classList.toggle('hide', !show);
+      });
+      var shown=tiles.filter(function(t){ return !t.classList.contains('hide'); });
+      shown.forEach(function(t,i){ t.style.transitionDelay=(i%3)*0.08+'s'; requestAnimationFrame(function(){ requestAnimationFrame(function(){ t.classList.add('on'); }); }); });
+    });
+  });
+
+  // Lightbox
+  var lb=document.getElementById('lightbox'), img=document.getElementById('lb-img'), cap=document.getElementById('lb-cap'), count=document.getElementById('lb-count');
+  var list=[], idx=0, lastFocus=null;
+  function visible(){ return tiles.filter(function(t){ return !t.classList.contains('hide'); }); }
+  function show(i){
+    idx=(i+list.length)%list.length;
+    var t=list[idx], im=t.querySelector('img');
+    img.style.opacity=0;
+    setTimeout(function(){ img.src=im.src; img.alt=im.alt; cap.innerHTML=t.querySelector('figcaption').innerHTML; count.textContent=(idx+1)+' / '+list.length; img.style.opacity=1; }, 180);
+  }
+  function open(t){ list=visible(); lastFocus=t; lb.classList.add('open'); lb.setAttribute('aria-hidden','false'); document.body.style.overflow='hidden'; show(list.indexOf(t)); document.getElementById('lb-close').focus(); }
+  function close(){ lb.classList.remove('open'); lb.setAttribute('aria-hidden','true'); document.body.style.overflow=''; if(lastFocus) lastFocus.focus(); }
+  tiles.forEach(function(t){
+    t.addEventListener('click', function(){ open(t); });
+    t.addEventListener('keydown', function(e){ if(e.key==='Enter'||e.key===' '){ e.preventDefault(); open(t); } });
+  });
+  document.getElementById('lb-close').addEventListener('click', close);
+  document.getElementById('lb-prev').addEventListener('click', function(){ show(idx-1); });
+  document.getElementById('lb-next').addEventListener('click', function(){ show(idx+1); });
+  lb.addEventListener('click', function(e){ if(e.target===lb) close(); });
+  document.addEventListener('keydown', function(e){
+    if(!lb.classList.contains('open')) return;
+    if(e.key==='Escape') close(); else if(e.key==='ArrowLeft') show(idx-1); else if(e.key==='ArrowRight') show(idx+1);
+  });
+  var sx=null;
+  lb.addEventListener('touchstart', function(e){ sx=e.touches[0].clientX; }, {passive:true});
+  lb.addEventListener('touchend', function(e){ if(sx===null) return; var dx=e.changedTouches[0].clientX-sx; if(Math.abs(dx)>50) show(idx+(dx<0?1:-1)); sx=null; });
+})();
+</script>
+</body>
+</html>
