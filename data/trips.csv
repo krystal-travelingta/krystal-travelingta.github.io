@@ -1,5 +1,9 @@
-show,section,title,destination,days,dates,price,tag,description,photo,regions
-yes,pick,Private Kenya Safari,Kenya,9,2026 to 2027,"$10,295",Private departure,"Big-cat country and classic Kenya, privately guided.",images/gallery/lion.jpg,
-yes,pick,Classic Japan,Japan,9,2026 to 2028,"$16,445",Small group,"Japan's classic highlights in nine days, with 18 guests at most.",images/gallery/japan-pagoda.jpg,
-yes,pick,India for the Senses,India,10,,"$9,995",Small group,"Ten days immersed in India's color and culture, with 18 guests at most.",images/gallery/india.jpg,
-yes,collection,Private Ready-to-Book Journeys,,,,,,"Dozens of private safaris and journeys with set itineraries and dates, ready to tailor with your perks.",images/gallery/lion.jpg,East Africa | Southern Africa | Asia | South America | Worldwide
+show,section,title,destination,days,dates,price,tag,description,photo,regions,page
+yes,pick,Private Kenya Safari,Kenya,9,2026 to 2027,"$10,295",Private departure,"Big-cat country and classic Kenya, privately guided.",images/gallery/lion.jpg,,
+yes,pick,Classic Japan,Japan,9,2026 to 2028,"$16,445",Small group,"Japan's classic highlights in nine days, with 18 guests at most.",images/gallery/japan-pagoda.jpg,,
+yes,pick,India for the Senses,India,10,,"$9,995",Small group,"Ten days immersed in India's color and culture, with 18 guests at most.",images/gallery/india.jpg,,
+yes,collection,Private Ready-to-Book Journeys,,,,,,"Dozens of private safaris and journeys with set itineraries and dates, ready to tailor with your perks.",images/gallery/lion.jpg,East Africa | Southern Africa | Asia | South America | Worldwide,
+yes,rail,The Palace on Wheels,India,11,November to March,"$8,599",Luxury rail,"Seven nights aboard India's royal train through Rajasthan's palace cities, with Delhi before and after.",images/gallery/india.jpg,,rail-palace-on-wheels.html
+yes,rail,The Luxury Trains of Peru,Peru,14,,"$19,059",Luxury rail,"The Hiram Bingham to Machu Picchu and two nights aboard the Andean Explorer across the high Andes.",images/machu-picchu.jpg,,rail-luxury-trains-of-peru.html
+yes,rail,Classic Peru by Rail,Peru,14,,"$9,639",Luxury rail,"Machu Picchu, Lake Titicaca and the Colca Canyon, linked by Peru's most scenic trains.",images/gallery/alpacas.jpg,,rail-classic-peru.html
+no,rail,"Venice, Florence & Rome by Train",Italy,7,,"$789",Rail,"Italy's three great cities, linked by train.",,,rail-venice-florence-rome.html
