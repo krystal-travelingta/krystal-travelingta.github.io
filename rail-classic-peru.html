@@ -1,0 +1,688 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" href="favicon.ico" sizes="any">
+<link rel="icon" type="image/png" href="favicon-32.png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<title>Classic Peru | Traveling the Atlas</title>
+<meta name="description" content="Classic Peru: Machu Picchu, Lake Titicaca &amp; the Colca Canyon. A 14-day luxury rail trip designed by Traveling the Atlas.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Lato:wght@300;400;700&family=Montserrat:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --deep:#0D1B2A; --navy:#1F345D; --gold:#C8A24B; --gold-soft:#DCC07F;
+  --cream:#F8F5F0; --charcoal:#333333; --white:#FFFFFF;
+  --serif:"Cormorant Garamond", Georgia, serif;
+  --sans:"Montserrat", system-ui, sans-serif;
+  --body:"Lato", system-ui, sans-serif;
+  --ease:cubic-bezier(.22,.61,.36,1);
+  --gutter:clamp(20px,5vw,72px);
+}
+*,*::before,*::after{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--cream);color:var(--charcoal);font:400 17px/1.7 var(--body);-webkit-font-smoothing:antialiased;overflow-x:hidden}
+img{max-width:100%;display:block}
+a{color:inherit}
+:focus-visible{outline:2px solid var(--gold);outline-offset:4px}
+.wrap{max-width:1240px;margin:0 auto;padding:0 var(--gutter)}
+h1,h2,h3{font-family:var(--serif);font-weight:500;line-height:1.08;margin:0;letter-spacing:-.01em}
+h2{font-size:clamp(2.2rem,4.6vw,3.9rem)}
+h3{font-size:clamp(1.5rem,2.2vw,1.9rem)}
+p{margin:0 0 1em}
+.label{font:500 .78rem/1.4 var(--sans);letter-spacing:.14em;color:var(--gold);margin:0 0 1.4rem}
+.btn{display:inline-block;font:600 .8rem/1 var(--sans);letter-spacing:.12em;text-decoration:none;padding:1.15rem 2rem;border:1px solid var(--gold);transition:background .5s var(--ease),color .5s var(--ease),border-color .5s var(--ease)}
+.btn-gold{background:var(--gold);color:var(--deep)}
+.btn-gold:hover{background:transparent;color:var(--gold)}
+.btn-line{color:var(--white);border-color:rgba(255,255,255,.45)}
+.btn-line:hover{border-color:var(--gold);color:var(--gold)}
+.btn-dark{color:var(--deep);border-color:var(--deep)}
+.btn-dark:hover{background:var(--deep);color:var(--cream)}
+
+/* Image slots: your photo loads over a rich fallback */
+.photo{position:relative;overflow:hidden;background:
+  radial-gradient(120% 90% at 20% 10%,rgba(200,162,75,.22),transparent 55%),
+  linear-gradient(160deg,var(--navy),var(--deep))}
+.photo img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+
+/* NAV */
+.nav{position:fixed;inset:0 0 auto;z-index:50;transition:background .6s var(--ease),padding .6s var(--ease),box-shadow .6s;padding:26px 0}
+.nav.solid{background:rgba(13,27,42,.94);backdrop-filter:blur(10px);padding:14px 0;box-shadow:0 1px 0 rgba(200,162,75,.25)}
+.nav .wrap{display:flex;align-items:center;justify-content:space-between;gap:24px}
+.brand{display:flex;align-items:center;gap:14px;text-decoration:none;color:var(--white)}
+.brand img{height:44px;width:auto}
+.brand span{font:500 1.35rem/1 var(--serif);letter-spacing:.04em}
+.menu{display:flex;gap:34px;list-style:none;margin:0;padding:0;align-items:center}
+.menu a{font:500 .78rem/1 var(--sans);letter-spacing:.14em;color:rgba(255,255,255,.85);text-decoration:none;position:relative;padding:6px 0}
+.menu a::after{content:"";position:absolute;left:0;bottom:0;height:1px;width:100%;background:var(--gold);transform:scaleX(0);transform-origin:right;transition:transform .5s var(--ease)}
+.menu a:hover::after{transform:scaleX(1);transform-origin:left}
+.menu .btn{padding:.9rem 1.4rem;color:var(--gold)}
+.menu .btn::after{display:none}
+.menu .btn:hover{background:var(--gold);color:var(--deep)}
+.toggle{display:none;background:none;border:0;color:var(--white);font-size:1.6rem;cursor:pointer}
+
+/* HERO */
+.hero{position:relative;min-height:100svh;display:flex;align-items:flex-end;color:var(--white);overflow:hidden;background:var(--deep)}
+.hero .photo{position:absolute;inset:0}
+.hero .photo img{animation:drift 26s var(--ease) forwards;transform-origin:60% 40%}
+@keyframes drift{from{transform:scale(1.14)}to{transform:scale(1)}}
+.hero::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(13,27,42,.45) 0%,rgba(13,27,42,0) 65%),linear-gradient(180deg,rgba(13,27,42,.55) 0%,rgba(13,27,42,.15) 35%,rgba(13,27,42,.88) 100%)}
+.graticule{position:absolute;inset:0;width:100%;height:100%;z-index:1;pointer-events:none;opacity:.55}
+.graticule path{fill:none;stroke:var(--gold);stroke-width:.6;stroke-dasharray:2400;stroke-dashoffset:2400;animation:draw 4.5s var(--ease) forwards}
+.graticule path:nth-child(2){animation-delay:.25s}.graticule path:nth-child(3){animation-delay:.5s}
+.graticule path:nth-child(4){animation-delay:.75s}.graticule path:nth-child(5){animation-delay:1s}
+.graticule path:nth-child(6){animation-delay:1.25s}.graticule path:nth-child(7){animation-delay:1.5s}
+@keyframes draw{to{stroke-dashoffset:0}}
+.hero .wrap{position:relative;z-index:2;width:100%;padding-top:140px;padding-bottom:clamp(64px,11vh,120px)}
+.hero h1{font-size:clamp(2.7rem,6.2vw,5.6rem);font-weight:400;max-width:17ch}
+.rise{display:block;overflow:hidden;padding-bottom:.06em}
+.rise > span{display:block;transform:translateY(110%);animation:rise 1.4s var(--ease) forwards}
+.rise:nth-child(2) > span{animation-delay:.25s}
+@keyframes rise{to{transform:none}}
+.hero .lede{max-width:34rem;font-size:1.15rem;font-weight:300;color:rgba(255,255,255,.88);margin:2rem 0 2.6rem;opacity:0;animation:fade 1.4s .9s var(--ease) forwards}
+.hero .label{opacity:0;animation:fade 1.2s .2s var(--ease) forwards}
+.hero .ctas{display:flex;gap:16px;flex-wrap:wrap;opacity:0;animation:fade 1.2s 1.2s var(--ease) forwards}
+@keyframes fade{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+.scroll-cue{position:absolute;right:var(--gutter);bottom:clamp(64px,11vh,120px);z-index:2;width:1px;height:90px;background:rgba(255,255,255,.2);overflow:hidden}
+.scroll-cue::after{content:"";position:absolute;left:0;top:-40%;width:1px;height:40%;background:var(--gold);animation:cue 2.6s var(--ease) infinite}
+@keyframes cue{to{top:100%}}
+
+/* SOMEDAY: the signature moment */
+.someday{padding:clamp(100px,14vw,180px) 0;text-align:center;background:var(--cream)}
+.someday .line{font:400 clamp(2.2rem,5.6vw,4.8rem)/1.15 var(--serif);color:var(--deep);margin:0 auto;max-width:18ch}
+.strike{position:relative;display:inline-block;color:var(--navy);transition:color 1s var(--ease) .9s}
+.strike::after{content:"";position:absolute;left:-4%;right:-4%;top:54%;height:2px;background:var(--gold);transform:scaleX(0);transform-origin:left;transition:transform 1s var(--ease) .4s}
+.date{display:block;font-style:italic;color:var(--gold);min-height:1.2em;margin-top:.15em}
+.date span{display:inline-block;opacity:0;transform:translateY(.4em);transition:opacity .5s var(--ease),transform .5s var(--ease)}
+.someday.on .strike{color:rgba(31,52,93,.38)}
+.someday.on .strike::after{transform:scaleX(1)}
+.someday .after{max-width:36rem;margin:3.2rem auto 0;font-size:1.1rem}
+.someday .after strong{font-family:var(--serif);font-size:1.35rem;font-weight:500;color:var(--deep);display:block;margin-bottom:.4rem}
+
+/* PILLARS */
+.pillars{background:var(--white);padding:clamp(90px,11vw,150px) 0}
+.pillars-head{display:grid;grid-template-columns:1.1fr 1fr;gap:clamp(32px,6vw,96px);align-items:end;margin-bottom:clamp(56px,7vw,96px)}
+.pillars-head h2{color:var(--deep)}
+.pillars-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(28px,4vw,64px)}
+.pillar{border-top:1px solid rgba(13,27,42,.15);padding-top:2rem;position:relative}
+.pillar::before{content:"";position:absolute;top:-1px;left:0;height:1px;width:100%;background:var(--gold);transform:scaleX(0);transform-origin:left;transition:transform 1.4s var(--ease)}
+.pillar.on::before{transform:scaleX(1)}
+.pillar:nth-child(2)::before{transition-delay:.2s}.pillar:nth-child(3)::before{transition-delay:.4s}
+.pillar h3{color:var(--deep);margin-bottom:.9rem}
+
+/* EXPERIENCES */
+.experiences{padding:clamp(90px,11vw,150px) 0;background:var(--cream)}
+.exp-head{max-width:40rem;margin-bottom:clamp(48px,6vw,80px)}
+.exp-head h2{color:var(--deep)}
+.exp-grid{display:grid;grid-template-columns:1.25fr 1fr;grid-template-rows:auto auto;gap:clamp(18px,2vw,28px)}
+.exp{position:relative;color:var(--white);text-decoration:none;min-height:420px;display:flex;align-items:flex-end}
+.exp:first-child{grid-row:span 2;min-height:780px}
+.exp .photo{position:absolute;inset:0}
+.exp .photo img{transition:transform 1.8s var(--ease)}
+.exp:hover .photo img{transform:scale(1.06)}
+.exp::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 30%,rgba(13,27,42,.55) 55%,rgba(13,27,42,.92))}
+.exp-body{position:relative;z-index:1;padding:clamp(26px,3vw,44px);max-width:30rem}
+.exp-body h3{font-size:clamp(1.8rem,2.8vw,2.5rem);margin-bottom:.6rem}
+.exp-body p{color:rgba(255,255,255,.85);margin:0}
+.exp-body .more{display:inline-block;margin-top:1.2rem;font:600 .74rem/1 var(--sans);letter-spacing:.14em;color:var(--gold);border-bottom:1px solid transparent;padding-bottom:4px;transition:border-color .5s}
+.exp:hover .more{border-color:var(--gold)}
+.also{margin-top:clamp(36px,4vw,56px);display:flex;flex-wrap:wrap;gap:12px 40px;align-items:baseline;border-top:1px solid rgba(13,27,42,.12);padding-top:28px}
+.also p{margin:0;font:500 .78rem/1.6 var(--sans);letter-spacing:.12em;color:var(--navy)}
+.also span{color:var(--charcoal)}
+
+/* PARALLAX QUOTE */
+.moment{background:var(--deep);position:relative;height:clamp(460px,80vh,760px);overflow:hidden;display:flex;align-items:center;justify-content:center;text-align:center;color:var(--white)}
+.moment .photo{position:absolute;inset:-18% 0;will-change:transform}
+.moment::after{content:"";position:absolute;inset:0;background:rgba(13,27,42,.5)}
+.moment blockquote{position:relative;z-index:1;margin:0;padding:0 var(--gutter);max-width:22ch;font:italic 400 clamp(2rem,4.8vw,4rem)/1.15 var(--serif)}
+.moment cite{display:block;margin-top:1.6rem;font:500 .78rem/1 var(--sans);letter-spacing:.14em;font-style:normal;color:var(--gold-soft)}
+
+/* ACCESS */
+.access{background:var(--deep);color:rgba(255,255,255,.82);padding:clamp(100px,12vw,160px) 0;position:relative;overflow:hidden}
+.access-grid{display:grid;grid-template-columns:1fr 1.15fr;gap:clamp(48px,7vw,120px);align-items:start}
+.access h2{color:var(--white)}
+.access .intro{margin-top:1.6rem;max-width:30rem}
+.perks{list-style:none;margin:0;padding:0}
+.perks li{display:grid;grid-template-columns:1fr auto;gap:24px;align-items:baseline;padding:1.5rem 0;border-bottom:1px solid rgba(200,162,75,.22)}
+.perks li:first-child{border-top:1px solid rgba(200,162,75,.22)}
+.perks h3{font-size:clamp(1.4rem,2vw,1.75rem);color:var(--white);font-weight:400}
+.perks small{font:500 .72rem/1.4 var(--sans);letter-spacing:.12em;color:var(--gold);text-align:right}
+.access .fine{margin-top:1.6rem;font-size:.85rem;color:rgba(255,255,255,.5)}
+
+/* PROCESS */
+.process{padding:clamp(90px,11vw,150px) 0;background:var(--white)}
+.process h2{color:var(--deep);max-width:16ch;margin-bottom:clamp(56px,7vw,90px)}
+.steps{display:grid;grid-template-columns:repeat(4,1fr);gap:clamp(24px,3vw,48px);list-style:none;margin:0;padding:0;position:relative}
+.steps::before{content:"";position:absolute;top:22px;left:0;right:0;height:1px;background:rgba(13,27,42,.12)}
+.steps::after{content:"";position:absolute;top:22px;left:0;right:0;height:1px;background:var(--gold);transform:scaleX(0);transform-origin:left;transition:transform 2.4s var(--ease)}
+.steps.on::after{transform:scaleX(1)}
+.step-num{width:45px;height:45px;border-radius:50%;background:var(--white);border:1px solid var(--gold);display:grid;place-items:center;font:500 1.1rem/1 var(--serif);color:var(--gold);position:relative;z-index:1;margin-bottom:1.8rem}
+.steps h3{color:var(--deep);margin-bottom:.6rem}
+.steps p{font-size:.98rem}
+
+/* KRYSTAL */
+.krystal{padding:clamp(90px,11vw,150px) 0;background:var(--cream)}
+.k-grid{display:grid;grid-template-columns:.9fr 1.1fr;gap:clamp(40px,7vw,110px);align-items:center}
+.k-photo{aspect-ratio:4/5;position:relative}
+.k-photo .photo{position:absolute;inset:0}
+.k-photo::before{content:"";position:absolute;inset:22px -22px -22px 22px;border:1px solid var(--gold);z-index:0}
+.k-photo .photo{z-index:1}
+.krystal h2{color:var(--deep);margin-bottom:1.6rem}
+.krystal .sig{font:italic 400 1.6rem/1 var(--serif);color:var(--navy);margin:0}
+.k-sign{display:flex;align-items:center;gap:28px;margin:2rem 0 2.2rem}
+.k-sign .badge{width:96px;height:96px}
+.k-photo .photo img{object-position:60% 20%}
+
+/* CLOSING */
+.closing{background:var(--navy);color:var(--white);text-align:center;padding:clamp(110px,13vw,180px) 0;position:relative;overflow:hidden}
+.closing h2{font-size:clamp(2.6rem,6vw,5.2rem);font-weight:400;max-width:14ch;margin:0 auto 1.6rem}
+.closing p{max-width:32rem;margin:0 auto 2.6rem;color:rgba(255,255,255,.8)}
+.closing .ctas{display:flex;gap:16px;justify-content:center;flex-wrap:wrap}
+.closing .ring{position:absolute;left:50%;top:50%;width:min(1100px,150vw);aspect-ratio:1;transform:translate(-50%,-50%);border:1px solid rgba(200,162,75,.14);border-radius:50%;animation:slowspin 120s linear infinite}
+.closing .ring::before{content:"";position:absolute;inset:12%;border:1px dashed rgba(200,162,75,.12);border-radius:50%}
+@keyframes slowspin{to{transform:translate(-50%,-50%) rotate(360deg)}}
+.closing .wrap{position:relative}
+
+/* FOOTER */
+footer{background:var(--deep);color:rgba(255,255,255,.6);padding:72px 0 40px;font-size:.88rem}
+.f-top{display:flex;justify-content:space-between;gap:40px;flex-wrap:wrap;align-items:flex-start;padding-bottom:40px;border-bottom:1px solid rgba(255,255,255,.08)}
+.f-top .brand span{font-size:1.5rem}
+.f-tag{font:italic 1.15rem/1.4 var(--serif);color:var(--gold-soft);margin-top:1rem}
+.f-links{display:flex;gap:28px;flex-wrap:wrap;list-style:none;margin:0;padding:0}
+.f-links a{text-decoration:none;font:500 .74rem/1 var(--sans);letter-spacing:.12em}
+.f-links a:hover{color:var(--gold)}
+.legal{padding-top:32px;font-size:.78rem;line-height:1.7;color:rgba(255,255,255,.45)}
+.legal .row{display:flex;gap:24px;align-items:center;flex-wrap:wrap;margin-bottom:1.2rem}
+.legal .badges{display:flex;align-items:center;gap:40px;flex-wrap:wrap}.legal .badges img.gtn{height:72px;width:auto}.legal .badges .vir img{width:170px;height:auto;display:block;margin:12px}.legal .row{gap:28px}@media (max-width:560px){.legal .badges{row-gap:8px}}
+.legal a{text-decoration:none}.legal a:hover{color:var(--gold)}
+
+/* Scroll reveals */
+.reveal{opacity:0;transform:translateY(28px);transition:opacity 1.2s var(--ease),transform 1.2s var(--ease)}
+.reveal.on{opacity:1;transform:none}
+.d1{transition-delay:.15s}.d2{transition-delay:.3s}.d3{transition-delay:.45s}
+
+/* Responsive */
+@media (max-width:1120px){.menu{position:fixed;inset:0;background:var(--deep);flex-direction:column;justify-content:center;gap:30px;opacity:0;pointer-events:none;transition:opacity .5s var(--ease)}.menu.open{opacity:1;pointer-events:auto}.menu a{font-size:.95rem}.toggle{display:block;position:relative;z-index:60}}
+@media (max-width:960px){
+  .menu{position:fixed;inset:0;background:var(--deep);flex-direction:column;justify-content:center;gap:30px;opacity:0;pointer-events:none;transition:opacity .5s var(--ease)}
+  .menu.open{opacity:1;pointer-events:auto}
+  .menu a{font-size:.95rem}
+  .toggle{display:block;position:relative;z-index:60}
+  .pillars-head,.access-grid,.k-grid{grid-template-columns:1fr}
+  .pillars-grid{grid-template-columns:1fr}
+  .exp-grid{grid-template-columns:1fr}
+  .exp:first-child{grid-row:auto;min-height:520px}
+  .exp{min-height:420px}
+  .steps{grid-template-columns:1fr 1fr;row-gap:48px}
+  .steps::before,.steps::after{display:none}
+  .k-photo{max-width:420px}
+}
+@media (max-width:560px){
+  body{font-size:16px}
+  .brand span{font-size:1.1rem}
+  .brand img{height:36px}
+  .steps{grid-template-columns:1fr}
+  .scroll-cue{display:none}
+  .perks li{grid-template-columns:1fr}
+  .perks small{text-align:left}
+  .k-photo::before{inset:14px -10px -14px 10px}
+}
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation:none!important;transition:none!important}
+  .rise > span,.hero .lede,.hero .label,.hero .ctas,.reveal{opacity:1!important;transform:none!important}
+  .graticule path{stroke-dashoffset:0}
+  .date span{opacity:1;transform:none}
+}
+
+/* rail itinerary */
+.rail{background:var(--cream);color:var(--ink);font-family:"Lato",system-ui,sans-serif;font-size:17px;line-height:1.65;
+-webkit-print-color-adjust:exact;print-color-adjust:exact}
+.rail .rw{max-width:1080px;margin:0 auto;padding:0 24px}
+.rail h1,.rail h2,.rail h3,.rail .serif{font-family:"Cormorant Garamond",Georgia,serif;}
+.rail .eyebrow{font-size:12px;letter-spacing:.22em;text-transform:uppercase;font-weight:600;color:var(--gold)}
+.rail /* hero */
+.rhero{background:var(--deep);color:var(--cream);position:relative;overflow:hidden}
+.rail .rhero .rcont{position:absolute;inset:0;width:100%;height:100%;opacity:.16}
+.rail .rhero .rw{position:relative;padding-top:28px;padding-bottom:56px}
+.rail .topbar{display:flex;justify-content:space-between;align-items:center;gap:16px;border-bottom:1px solid rgba(200,162,75,.35);padding-bottom:16px}
+.rail .wordmark{font-family:"Cormorant Garamond",Georgia,serif;font-size:19px;letter-spacing:.14em;text-transform:uppercase;color:var(--cream);text-decoration:none}
+.rail .wordmark b{color:var(--gold);font-weight:500}
+.rail .coords{font-size:12px;letter-spacing:.16em;color:var(--gold-soft)}
+.rail .rhero .eyebrow{margin-top:64px;display:block}
+.rail .rhero h1{font-size:clamp(40px,7vw,76px);line-height:1.02;font-weight:400;margin-top:14px;letter-spacing:-.01em}
+.rail .rhero .rsub{font-family:"Cormorant Garamond",Georgia,serif;font-style:italic;font-weight:300;font-size:clamp(20px,2.6vw,27px);color:var(--gold-soft);margin-top:10px}
+.rail .facts{display:flex;flex-wrap:wrap;gap:0;margin-top:40px;border-top:1px solid rgba(200,162,75,.35)}
+.rail .fact{padding:18px 36px 0 0;margin-right:36px;border-right:1px solid rgba(200,162,75,.25)}
+.rail .fact:last-child{border-right:0}
+.rail .fact .n{font-family:"Cormorant Garamond",Georgia,serif;font-size:34px;line-height:1;color:var(--white)}
+.rail .fact .l{font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--gold-soft);margin-top:6px}
+.rail .fact.rprice .n{color:var(--gold)}
+.rail .placeholder{background:rgba(200,162,75,.18);outline:1px dashed var(--gold);padding:0 4px}
+.rail /* intro + map */
+section{padding:72px 0}
+.rail .intro-grid{display:grid;grid-template-columns:1fr 1.15fr;gap:56px;align-items:start}
+.rail .rlede{font-family:"Cormorant Garamond",Georgia,serif;font-size:23px;line-height:1.5;font-weight:300;color:var(--deep)}
+.rail .signoff{margin-top:20px;font-size:14px;color:var(--muted)}
+.rail .signoff b{color:var(--navy);font-weight:600}
+.rail figure.mapfig{background:var(--white);border:1px solid var(--line);padding:14px}
+.rail .map{display:block;width:100%;height:auto}
+.rail .rgrat line{stroke:#D9CFBD;stroke-width:.6}
+.rail .grat{font-family:"Montserrat",sans-serif;font-size:9px;fill:#A99E88;letter-spacing:.08em}
+.rail .area{font-family:"Cormorant Garamond",Georgia,serif;font-style:italic;font-size:14px;fill:#9A8E78}
+.rail .sea{font-family:"Cormorant Garamond",Georgia,serif;font-style:italic;font-size:16px;fill:#8FA3B8;letter-spacing:.06em}
+.rail .leg{fill:none;stroke-linecap:round}
+.rail .leg.rl{stroke:var(--gold);stroke-width:3}
+.rail .leg.road{stroke:var(--navy);stroke-width:2;stroke-dasharray:1 5}
+.rail .leg.air{stroke:var(--navy);stroke-width:1.4;stroke-dasharray:7 5;opacity:.75}
+.rail .rbadge{fill:var(--deep);stroke:var(--gold);stroke-width:2}
+.rail .badge-n{font-family:"Montserrat",sans-serif;font-weight:700;font-size:12px;fill:var(--white)}
+.rail .onboard{fill:var(--white);stroke:var(--gold);stroke-width:3}
+.rail .way{fill:var(--navy)}
+.rail .place{font-family:"Montserrat",sans-serif;font-weight:700;font-size:11.5px;letter-spacing:.1em;fill:var(--deep);paint-order:stroke;stroke:var(--map-bg);stroke-width:4px;stroke-linejoin:round}
+.rail .compass circle{fill:none;stroke:var(--gold);stroke-width:1}
+.rail .compass path{fill:var(--gold)}
+.rail .compass text{font-family:"Cormorant Garamond",Georgia,serif;font-size:12px;fill:var(--navy)}
+.rail figcaption{display:flex;flex-wrap:wrap;gap:8px 20px;font-size:12px;letter-spacing:.06em;color:var(--muted);margin-top:10px;align-items:center}
+.rail .lg{display:inline-flex;align-items:center;gap:8px}
+.rail .key-badge{display:inline-flex;align-items:center;gap:8px}
+.rail .key-badge i{display:inline-grid;place-items:center;width:18px;height:18px;border-radius:50%;background:var(--deep);border:1.5px solid var(--gold);color:#fff;font-style:normal;font-size:10px;font-weight:700}
+.rail .key-badge i.ob{background:#fff;border-width:2.5px}
+.rail /* route strip */
+.route{list-style:none;display:flex;flex-wrap:wrap;gap:10px 0;margin-top:28px;counter-reset:s}
+.rail .route li{display:flex;align-items:center;font-size:13px}
+.rail .route li .stop{background:var(--white);border:1px solid var(--line);padding:6px 12px}
+.rail .route li .stop b{display:block;font-family:"Cormorant Garamond",Georgia,serif;font-weight:500;font-size:15px;color:var(--deep)}
+.rail .route li .stop span{font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+.rail .route li+li::before{content:"";width:18px;height:1px;background:var(--gold);margin:0 4px}
+.rail /* highlights */
+.band{background:var(--white);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.rail h2{font-size:clamp(30px,4vw,42px);font-weight:400;color:var(--deep);line-height:1.1;margin-top:10px}
+.rail .hl{list-style:none;display:grid;grid-template-columns:repeat(2,1fr);gap:0 48px;margin-top:32px}
+.rail .hl li{padding:16px 0 16px 34px;border-bottom:1px solid var(--line);position:relative;font-size:16px}
+.rail .hl li::before{content:"";position:absolute;left:4px;top:24px;width:12px;height:12px;border:1.5px solid var(--gold);transform:rotate(45deg)}
+.rail /* days */
+.days{margin-top:40px;position:relative}
+.rail .day{display:grid;grid-template-columns:110px 1fr;gap:28px;padding:30px 0;border-top:1px solid var(--line);break-inside:avoid;page-break-inside:avoid}
+.rail .day .num{font-family:"Cormorant Garamond",Georgia,serif;color:var(--gold);line-height:1}
+.rail .day .num small{display:block;font-family:"Montserrat",sans-serif;font-size:11px;letter-spacing:.24em;text-transform:uppercase;color:var(--muted);margin-bottom:6px}
+.rail .day .num span{font-size:54px;font-weight:300}
+.rail .day .where{font-size:12px;letter-spacing:.18em;text-transform:uppercase;font-weight:600;color:var(--navy)}
+.rail .day h3{font-size:26px;font-weight:500;color:var(--deep);line-height:1.2;margin:6px 0 10px}
+.rail .day p{max-width:68ch}
+.rail .meta{display:flex;flex-wrap:wrap;gap:8px 28px;margin-top:14px;font-size:13.5px;color:var(--muted)}
+.rail .meta b{font-weight:600;color:var(--ink);letter-spacing:.04em}
+.rail /* included + tip */
+.inc-grid{display:grid;grid-template-columns:1.5fr 1fr;gap:56px;align-items:start}
+.rail .inc{list-style:none;columns:2;column-gap:36px;margin-top:28px}
+.rail .inc li{break-inside:avoid;padding:9px 0 9px 26px;position:relative;font-size:15px;border-bottom:1px solid var(--line)}
+.rail .inc li::before{content:"";position:absolute;left:2px;top:17px;width:12px;height:6px;border-left:2px solid var(--gold);border-bottom:2px solid var(--gold);transform:rotate(-45deg)}
+.rail .tip{background:var(--navy);color:var(--cream);padding:34px 32px;position:relative;break-inside:avoid}
+.rail .tip::before{content:"";position:absolute;inset:8px;border:1px solid rgba(200,162,75,.45);pointer-events:none}
+.rail .tip h3{font-size:24px;font-weight:400;color:var(--white);margin:8px 0 12px}
+.rail .tip p{font-size:15.5px;color:#E9E4DA}
+.rail /* cta */
+.cta{background:var(--deep);color:var(--cream);text-align:center;position:relative;overflow:hidden}
+.rail .cta .rcont{position:absolute;inset:0;width:100%;height:100%;opacity:.12}
+.rail .cta .rw{position:relative}
+.rail .cta h2{color:var(--white)}
+.rail .cta .rprice{font-family:"Cormorant Garamond",Georgia,serif;font-size:clamp(40px,6vw,60px);color:var(--gold);margin-top:18px;line-height:1}
+.rail .cta .rprice small{display:block;font-family:"Montserrat",sans-serif;font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:var(--gold-soft);margin-top:12px}
+.rail .cta .rfine{font-size:14px;color:#BFC6CF;max-width:52ch;margin:18px auto 0}
+.rail .btns{display:flex;justify-content:center;flex-wrap:wrap;gap:12px;margin-top:32px}
+.rail .rbtn{display:inline-block;padding:14px 26px;font-size:13px;letter-spacing:.16em;text-transform:uppercase;font-weight:600;text-decoration:none}
+.rail .rbtn.rsolid{background:var(--gold);color:var(--deep)}
+.rail .rbtn.rghost{border:1px solid var(--gold);color:var(--cream)}
+.rail .person{margin-top:34px;font-size:14px;color:var(--gold-soft)}
+.rail .person b{font-family:"Cormorant Garamond",Georgia,serif;font-weight:400;font-size:20px;color:var(--white);display:block}
+.rail footer{background:var(--deep);border-top:1px solid rgba(200,162,75,.3);color:#8E99A8;font-size:12.5px;padding:22px 0}
+.rail footer .rw{display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px}
+@media (max-width:780px){.rail{font-size:16px}
+.rail .rw{padding:0 16px}
+.rail section{padding:52px 0}
+.rail .intro-grid,.rail .inc-grid{grid-template-columns:1fr;gap:36px}
+.rail .hl{grid-template-columns:1fr}
+.rail .inc{columns:1}
+.rail .day{grid-template-columns:1fr;gap:6px}
+.rail .day .num span{font-size:40px}
+.rail .day .num small{display:inline;margin-right:8px}
+.rail .fact{padding-right:20px;margin-right:20px}
+.rail .fact .n{font-size:28px}
+.rail .topbar{flex-direction:column;align-items:flex-start;gap:6px}
+.rail .rhero .eyebrow{margin-top:40px}
+.rail .rlede{font-size:20px}}
+@media print{.rail .eyebrow{display:block}
+.rail figure.mapfig{width:100%}
+.rail .map{height:3.05in;width:100%}
+.rail figure.mapfig{padding:8px}
+.rail{font-size:11pt;background:var(--cream)}
+.rail section{padding:36px 0}
+.rail .rhero .rw{padding-top:24px;padding-bottom:36px}
+.rail .rhero .eyebrow{margin-top:40px}
+.rail .rw{padding:0 .55in}
+.rail .intro-grid{display:block}
+.rail .intro-grid figure{margin-top:18px}
+.rail .inc-grid{display:block}
+.rail .inc-grid .tip{margin-top:24px}
+.rail .inc-grid{grid-template-columns:1fr;gap:24px}
+.rail .rhero h1{font-size:44px}
+.rail .facts{margin-top:24px}
+.rail .rhero .eyebrow{margin-top:28px}
+.rail section:first-of-type{padding-top:24px}
+.rail .cta,.rail .inc-grid,.rail .tip{break-inside:avoid}
+.rail .cta{padding:40px 0}
+.rail .rlede{font-size:14pt}
+.rail .day{padding:18px 0;grid-template-columns:80px 1fr;gap:20px}
+.rail .day .num span{font-size:40px}
+.rail .day h3{font-size:18pt}
+.rail .hl li{padding:9px 0 9px 30px;font-size:10.5pt}
+.rail .hl li::before{top:15px}
+.rail .inc li{font-size:10pt;padding:6px 0 6px 24px}
+.rail .inc li::before{top:12px}
+.rail figure.mapfig,.rail .hl li,.rail .route{break-inside:avoid}
+.rail h2,.rail .eyebrow{break-after:avoid}
+.rail .hl{display:block;columns:2;column-gap:40px}
+.rail .btns .rbtn.rghost{display:none}
+.rail a[href^="mailto"]::after,.rail a[href^="tel"]::after{content:""}
+.rail footer{padding:14px 0}}
+
+.rail{background:var(--cream);color:var(--ink);font-family:"Lato",system-ui,sans-serif;font-size:17px;line-height:1.65;
+ --ink:#333333;--muted:#6B6A66;--line:#E5DED2;--map-bg:#F3EEE4;--gold-soft:#DCC07F}
+.rail *{box-sizing:border-box}
+.rail ul,.rail ol{padding:0;margin:0}
+.rail p{margin:0}
+.rail figure{margin:0}
+.rail h1,.rail h2,.rail h3{font-family:"Cormorant Garamond",Georgia,serif;letter-spacing:0}
+.rail .eyebrow,.rail .fact .l,.rail .where,.rail .route li .stop span,.rail .day .num small,.rail .rbtn,.rail .meta b,.rail .rprice small,.rail figcaption{font-family:"Montserrat",sans-serif}
+.rail section{padding:72px 0;margin:0}
+.rail .rhero .rw{padding-top:150px}
+.rail .rhero h1{font-weight:400;font-size:clamp(46px,7.4vw,86px)}
+.rail .rhero .rsub{font-weight:400}
+.rail .lede-sig,.rail .rlede{font-size:25px;font-weight:400}
+.rail .fact .n{font-size:40px}
+.rail .day h3{font-size:30px}
+.rail h2{font-size:clamp(34px,4.4vw,48px);max-width:none;margin:10px 0 0}
+.rail .cta h2{margin:10px auto 0}
+.rail .coords{display:block;margin-top:0}
+.rail .rbtn{transition:background .4s,color .4s}
+.rail .rbtn.rsolid:hover{background:var(--cream)}
+.rail .rbtn.rghost:hover{background:var(--gold);color:var(--deep)}
+.rail .back{display:inline-block;margin-top:22px;font:600 12px/1 "Montserrat",sans-serif;letter-spacing:.16em;color:var(--gold-soft);text-decoration:none}
+.rail .back:hover{color:var(--gold)}
+.rail .rhero .rcont path,.rail .rhero .rcont polyline{stroke-dasharray:2400;stroke-dashoffset:2400;animation:rdraw 5s ease-out forwards}
+@keyframes rdraw{to{stroke-dashoffset:0}}
+.rail .map .leg.rl{stroke-dasharray:900;stroke-dashoffset:900;transition:stroke-dashoffset 3s ease-out}
+.rail .mapfig.on .map .leg.rl{stroke-dashoffset:0}
+.rail .reveal{opacity:0;transform:translateY(26px);transition:opacity 1s cubic-bezier(.22,.61,.36,1),transform 1s cubic-bezier(.22,.61,.36,1)}
+.rail .reveal.on{opacity:1;transform:none}
+@media (prefers-reduced-motion:reduce){.rail .reveal{opacity:1;transform:none;transition:none}.rail .rhero .rcont path,.rail .rhero .rcont polyline{animation:none;stroke-dasharray:none}.rail .map .leg.rl{stroke-dasharray:none;transition:none}}
+@media (max-width:780px){.rail .rhero .rw{padding-top:120px}.rail .rlede{font-size:21px}}
+
+</style>
+</head>
+<body>
+<nav class="nav" id="nav" aria-label="Main">
+  <div class="wrap">
+    <a class="brand" href="index.html" aria-label="Traveling the Atlas home">
+      <img src="images/TA_NO_BACK_NO_PLANE.png" alt="" onerror="this.remove()">
+      <span>Traveling the Atlas</span>
+    </a>
+    <button class="toggle" id="toggle" aria-label="Open menu" aria-expanded="false" aria-controls="menu">&#9776;</button>
+    <ul class="menu" id="menu">
+      <li><a href="about.html">ABOUT</a></li>
+      <li><a href="services.html">SERVICES</a></li>
+      <li><a href="trips.html" aria-current="page">TRIPS</a></li>
+      <li><a href="gallery.html">GALLERY</a></li>
+      <li><a href="blog.html">JOURNAL</a></li>
+      <li><a class="btn" href="contact.html">START PLANNING</a></li>
+    </ul>
+  </div>
+</nav>
+<main class="rail">
+<header class="rhero"><svg class="rcont" viewBox="0 0 1200 600" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><g fill="none" stroke="#C8A24B" stroke-width="1"><polyline points="0,70.1 20,64.2 40,57.9 60,51.2 80,44.2 100,37.3 120,30.4 140,23.8 160,17.6 180,11.9 200,6.9 220,2.7 240,-0.7 260,-3.1 280,-4.5 300,-4.9 320,-4.3 340,-2.7 360,-0.2 380,3.2 400,7.5 420,12.4 440,17.9 460,23.9 480,30.1 500,36.5 520,43.0 540,49.3 560,55.3 580,60.9 600,66.0 620,70.4 640,74.1 660,76.9 680,78.9 700,79.9 720,80.0 740,79.2 760,77.4 780,74.8 800,71.4 820,67.4 840,62.7 860,57.6 880,52.1 900,46.4 920,40.6 940,34.9 960,29.3 980,24.1 1000,19.4 1020,15.2 1040,11.6 1060,8.8 1080,6.8 1100,5.6 1120,5.3 1140,5.8 1160,7.1 1180,9.3 1200,12.1 1220,15.7"/><polyline points="0,104.1 20,102.5 40,100.4 60,97.9 80,95.0 100,91.9 120,88.5 140,85.0 160,81.4 180,77.7 200,74.1 220,70.5 240,67.2 260,64.1 280,61.2 300,58.7 320,56.5 340,54.8 360,53.5 380,52.6 400,52.1 420,52.0 440,52.4 460,53.2 480,54.3 500,55.7 520,57.5 540,59.5 560,61.7 580,64.0 600,66.5 620,69.0 640,71.6 660,74.2 680,76.7 700,79.2 720,81.6 740,83.9 760,86.0 780,88.0 800,89.9 820,91.6 840,93.2 860,94.6 880,95.9 900,97.0 920,98.1 940,99.0 960,99.8 980,100.5 1000,101.0 1020,101.5 1040,101.8 1060,102.0 1080,102.1 1100,102.0 1120,101.7 1140,101.2 1160,100.6 1180,99.7 1200,98.6 1220,97.2"/><polyline points="0,100.6 20,101.8 40,103.2 60,104.9 80,106.8 100,108.9 120,111.2 140,113.5 160,115.9 180,118.2 200,120.5 220,122.6 240,124.6 260,126.4 280,127.9 300,129.2 320,130.3 340,131.1 360,131.6 380,131.8 400,131.8 420,131.5 440,130.9 460,130.2 480,129.3 500,128.3 520,127.1 540,125.8 560,124.6 580,123.3 600,122.0 620,120.8 640,119.6 660,118.6 680,117.7 700,116.9 720,116.3 740,115.9 760,115.6 780,115.5 800,115.5 820,115.7 840,116.0 860,116.4 880,116.9 900,117.5 920,118.1 940,118.7 960,119.3 980,119.9 1000,120.5 1020,120.9 1040,121.3 1060,121.6 1080,121.8 1100,121.9 1120,121.8 1140,121.7 1160,121.4 1180,121.0 1200,120.5 1220,120.0"/><polyline points="0,200.0 20,197.6 40,194.8 60,191.5 80,187.9 100,183.8 120,179.5 140,174.8 160,169.9 180,164.8 200,159.6 220,154.2 240,148.8 260,143.5 280,138.2 300,133.0 320,128.1 340,123.4 360,119.0 380,115.0 400,111.4 420,108.2 440,105.5 460,103.2 480,101.6 500,100.4 520,99.8 540,99.8 560,100.4 580,101.4 600,103.0 620,105.1 640,107.7 660,110.7 680,114.1 700,117.9 720,122.0 740,126.4 760,130.9 780,135.7 800,140.5 820,145.3 840,150.2 860,155.0 880,159.7 900,164.3 920,168.7 940,172.8 960,176.7 980,180.3 1000,183.6 1020,186.5 1040,189.1 1060,191.3 1080,193.2 1100,194.7 1120,195.9 1140,196.7 1160,197.2 1180,197.4 1200,197.3 1220,197.0"/><polyline points="0,179.1 20,173.9 40,169.2 60,165.3 80,162.2 100,159.9 120,158.5 140,158.0 160,158.5 180,159.8 200,162.0 220,164.9 240,168.5 260,172.6 280,177.2 300,182.0 320,187.0 340,191.9 360,196.7 380,201.1 400,205.1 420,208.5 440,211.2 460,213.1 480,214.1 500,214.2 520,213.3 540,211.6 560,209.0 580,205.5 600,201.4 620,196.6 640,191.4 660,185.8 680,180.1 700,174.5 720,169.1 740,164.0 760,159.6 780,155.9 800,153.1 820,151.3 840,150.6 860,151.1 880,152.9 900,155.9 920,160.1 940,165.5 960,172.1 980,179.5 1000,187.9 1020,196.9 1040,206.3 1060,216.0 1080,225.8 1100,235.4 1120,244.6 1140,253.3 1160,261.1 1180,267.9 1200,273.5 1220,277.9"/><polyline points="0,280.4 20,273.5 40,266.5 60,259.4 80,252.5 100,245.8 120,239.4 140,233.3 160,227.7 180,222.5 200,217.9 220,213.9 240,210.4 260,207.5 280,205.2 300,203.4 320,202.1 340,201.3 360,200.9 380,200.9 400,201.2 420,201.8 440,202.6 460,203.6 480,204.7 500,205.9 520,207.1 540,208.3 560,209.6 580,210.9 600,212.1 620,213.3 640,214.5 660,215.7 680,216.9 700,218.2 720,219.5 740,220.9 760,222.4 780,224.0 800,225.8 820,227.6 840,229.7 860,231.8 880,234.1 900,236.6 920,239.2 940,241.8 960,244.5 980,247.2 1000,249.9 1020,252.5 1040,255.0 1060,257.4 1080,259.5 1100,261.4 1120,263.0 1140,264.3 1160,265.2 1180,265.7 1200,265.9 1220,265.6"/><polyline points="0,268.6 20,269.9 40,271.6 60,273.7 80,276.1 100,278.8 120,281.7 140,284.7 160,287.7 180,290.8 200,293.7 220,296.5 240,298.9 260,301.1 280,302.9 300,304.2 320,305.1 340,305.4 360,305.2 380,304.5 400,303.1 420,301.3 440,299.0 460,296.1 480,292.9 500,289.3 520,285.4 540,281.3 560,277.0 580,272.6 600,268.3 620,264.0 640,259.8 660,255.9 680,252.2 700,248.9 720,246.0 740,243.5 760,241.4 780,239.8 800,238.6 820,237.9 840,237.7 860,238.0 880,238.6 900,239.7 920,241.1 940,242.8 960,244.9 980,247.1 1000,249.6 1020,252.3 1040,255.1 1060,258.1 1080,261.1 1100,264.2 1120,267.3 1140,270.5 1160,273.8 1180,277.0 1200,280.3 1220,283.7"/><polyline points="0,323.7 20,319.0 40,314.5 60,310.3 80,306.3 100,302.8 120,299.7 140,296.9 160,294.6 180,292.8 200,291.4 220,290.4 240,289.9 260,289.7 280,290.0 300,290.5 320,291.4 340,292.6 360,294.0 380,295.5 400,297.3 420,299.1 440,301.0 460,303.0 480,304.9 500,306.9 520,308.8 540,310.7 560,312.4 580,314.1 600,315.7 620,317.2 640,318.6 660,319.9 680,321.1 700,322.3 720,323.4 740,324.4 760,325.4 780,326.4 800,327.3 820,328.3 840,329.2 860,330.2 880,331.1 900,332.1 920,333.1 940,334.1 960,335.0 980,335.9 1000,336.8 1020,337.6 1040,338.4 1060,339.0 1080,339.5 1100,339.8 1120,340.0 1140,339.9 1160,339.6 1180,339.1 1200,338.4 1220,337.3"/><polyline points="0,348.1 20,347.3 40,347.3 60,347.9 80,349.1 100,350.9 120,353.0 140,355.4 160,358.0 180,360.6 200,363.1 220,365.4 240,367.4 260,369.0 280,370.1 300,370.7 320,370.7 340,370.2 360,369.2 380,367.7 400,365.9 420,363.7 440,361.3 460,358.8 480,356.4 500,354.1 520,352.2 540,350.7 560,349.7 580,349.4 600,349.8 620,351.1 640,353.1 660,356.0 680,359.8 700,364.3 720,369.5 740,375.3 760,381.7 780,388.3 800,395.2 820,402.0 840,408.7 860,415.0 880,420.8 900,425.9 920,430.0 940,433.2 960,435.2 980,436.0 1000,435.4 1020,433.6 1040,430.4 1060,425.9 1080,420.2 1100,413.3 1120,405.5 1140,396.8 1160,387.4 1180,377.6 1200,367.5 1220,357.4"/><polyline points="0,418.4 20,416.5 40,414.7 60,413.0 80,411.4 100,410.1 120,408.9 140,407.9 160,407.1 180,406.5 200,406.0 220,405.6 240,405.4 260,405.1 280,404.9 300,404.6 320,404.3 340,403.8 360,403.2 380,402.3 400,401.3 420,399.9 440,398.3 460,396.5 480,394.3 500,391.9 520,389.2 540,386.3 560,383.2 580,380.0 600,376.7 620,373.3 640,370.0 660,366.9 680,363.9 700,361.1 720,358.7 740,356.7 760,355.2 780,354.3 800,353.9 820,354.3 840,355.3 860,357.0 880,359.5 900,362.7 920,366.6 940,371.2 960,376.5 980,382.3 1000,388.7 1020,395.6 1040,402.8 1060,410.2 1080,417.8 1100,425.5 1120,433.0 1140,440.3 1160,447.3 1180,453.8 1200,459.7 1220,464.9"/><polyline points="0,460.9 20,465.5 40,469.6 60,473.0 80,475.6 100,477.4 120,478.2 140,478.0 160,476.8 180,474.8 200,471.8 220,468.0 240,463.5 260,458.4 280,452.9 300,447.1 320,441.2 340,435.3 360,429.6 380,424.2 400,419.4 420,415.1 440,411.5 460,408.6 480,406.6 500,405.4 520,405.0 540,405.4 560,406.6 580,408.4 600,410.8 620,413.6 640,416.8 660,420.1 680,423.5 700,426.8 720,429.9 740,432.7 760,435.1 780,436.9 800,438.1 820,438.7 840,438.6 860,437.9 880,436.6 900,434.7 920,432.3 940,429.4 960,426.3 980,423.0 1000,419.6 1020,416.2 1040,413.1 1060,410.2 1080,407.8 1100,405.8 1120,404.5 1140,403.8 1160,403.8 1180,404.6 1200,406.0 1220,408.0"/><polyline points="0,507.0 20,507.3 40,506.9 60,505.9 80,504.2 100,502.0 120,499.4 140,496.6 160,493.5 180,490.4 200,487.4 220,484.6 240,482.1 260,480.0 280,478.5 300,477.5 320,477.1 340,477.5 360,478.5 380,480.3 400,482.7 420,485.7 440,489.3 460,493.3 480,497.7 500,502.4 520,507.1 540,511.9 560,516.6 580,521.0 600,525.0 620,528.5 640,531.5 660,533.7 680,535.2 700,535.9 720,535.8 740,534.8 760,532.9 780,530.3 800,526.9 820,522.9 840,518.3 860,513.2 880,507.8 900,502.1 920,496.4 940,490.7 960,485.2 980,479.9 1000,475.1 1020,470.8 1040,467.1 1060,464.1 1080,461.8 1100,460.2 1120,459.4 1140,459.3 1160,459.9 1180,461.2 1200,463.1 1220,465.4"/><polyline points="0,507.8 20,511.0 40,514.4 60,517.7 80,520.9 100,524.2 120,527.3 140,530.4 160,533.4 180,536.3 200,539.0 220,541.6 240,544.1 260,546.3 280,548.4 300,550.3 320,552.0 340,553.5 360,554.8 380,555.9 400,556.7 420,557.3 440,557.8 460,558.0 480,558.0 500,557.7 520,557.3 540,556.7 560,556.0 580,555.0 600,553.9 620,552.7 640,551.3 660,549.8 680,548.2 700,546.6 720,544.8 740,543.0 760,541.2 780,539.3 800,537.5 820,535.6 840,533.8 860,532.0 880,530.3 900,528.6 920,527.1 940,525.6 960,524.2 980,522.9 1000,521.8 1020,520.7 1040,519.9 1060,519.1 1080,518.5 1100,518.0 1120,517.7 1140,517.6 1160,517.5 1180,517.6 1200,517.8 1220,518.2"/><polyline points="0,596.3 20,595.9 40,595.2 60,594.0 80,592.6 100,590.7 120,588.5 140,586.0 160,583.2 180,580.1 200,576.7 220,573.2 240,569.4 260,565.6 280,561.6 300,557.6 320,553.6 340,549.7 360,545.8 380,542.1 400,538.6 420,535.2 440,532.2 460,529.5 480,527.0 500,525.0 520,523.3 540,522.1 560,521.2 580,520.8 600,520.8 620,521.2 640,522.0 660,523.2 680,524.8 700,526.7 720,529.0 740,531.5 760,534.3 780,537.3 800,540.4 820,543.6 840,547.0 860,550.3 880,553.6 900,556.8 920,559.9 940,562.8 960,565.5 980,568.0 1000,570.2 1020,572.1 1040,573.7 1060,575.0 1080,575.9 1100,576.4 1120,576.6 1140,576.4 1160,575.9 1180,575.0 1200,573.8 1220,572.4"/></g></svg>
+<div class="rw">
+ <span class="coords">12.0464° S · 77.0428° W</span>
+ <span class="eyebrow">Peru · By Rail &amp; Road</span>
+ <h1>Classic Peru</h1>
+ <p class="rsub">Machu Picchu, Lake Titicaca &amp; the Colca Canyon</p>
+ <div class="facts">
+  <div class="fact"><div class="n">14</div><div class="l">Days</div></div>
+  <div class="fact"><div class="n">13</div><div class="l">Nights</div></div>
+  <div class="fact"><div class="n">7</div><div class="l">Stops</div></div>
+  <div class="fact rprice"><div class="n">$9,639</div><div class="l">From, per person</div></div>
+ </div>
+<a class="back" href="trips.html">&larr; ALL FEATURED TRIPS</a>
+</div></header>
+
+
+<section><div class="rw">
+ <div class="intro-grid">
+  <div><span class="eyebrow">The Trip</span>
+   <p class="rlede" style="margin-top:14px">This is the Peru trip I&#x27;d hand someone who wants to see all of it. You&#x27;ll go from Lima&#x27;s food scene to the Inca heartland, spend a night steps from Machu Picchu, ride one of South America&#x27;s most beautiful train routes to Lake Titicaca, and finish with condors over the Colca Canyon and a slower pace in Arequipa. Private guides and drivers handle the details along the way, so all you have to do is take it in.</p>
+   <p class="signoff"><b>Krystal Winchel</b>, Founder, Traveling the Atlas</p></div>
+  <figure class="mapfig"><svg class="map" viewBox="0 0 640 430" role="img" aria-label="Route map" xmlns="http://www.w3.org/2000/svg">
+<rect width="640" height="430" fill="var(--map-bg)"/>
+<g class="rgrat"><line x1="67.0" y1="0" x2="67.0" y2="430"/><text class="grat" x="71.0" y="422">77°W</text><line x1="141.4" y1="0" x2="141.4" y2="430"/><text class="grat" x="145.4" y="422">76°W</text><line x1="215.8" y1="0" x2="215.8" y2="430"/><text class="grat" x="219.8" y="422">75°W</text><line x1="290.2" y1="0" x2="290.2" y2="430"/><text class="grat" x="294.2" y="422">74°W</text><line x1="364.7" y1="0" x2="364.7" y2="430"/><text class="grat" x="368.7" y="422">73°W</text><line x1="439.1" y1="0" x2="439.1" y2="430"/><text class="grat" x="443.1" y="422">72°W</text><line x1="513.5" y1="0" x2="513.5" y2="430"/><text class="grat" x="517.5" y="422">71°W</text><line x1="587.9" y1="0" x2="587.9" y2="430"/><text class="grat" x="591.9" y="422">70°W</text><line x1="0" y1="429.9" x2="640" y2="429.9"/><text class="grat" x="6" y="425.9">17°S</text><line x1="0" y1="353.1" x2="640" y2="353.1"/><text class="grat" x="6" y="349.1">16°S</text><line x1="0" y1="276.4" x2="640" y2="276.4"/><text class="grat" x="6" y="272.4">15°S</text><line x1="0" y1="199.6" x2="640" y2="199.6"/><text class="grat" x="6" y="195.6">14°S</text><line x1="0" y1="122.8" x2="640" y2="122.8"/><text class="grat" x="6" y="118.8">13°S</text><line x1="0" y1="46.1" x2="640" y2="46.1"/><text class="grat" x="6" y="42.1">12°S</text></g>
+<text class="area" x="592" y="296" text-anchor="middle">Lake Titicaca</text>
+<text class="sea" x="112" y="322" text-anchor="middle">Pacific Ocean</text>
+<path class="leg air" d="M63.8,49.6 Q266.3,61.3 441.5,163.7"/>
+<path class="leg road" d="M441.5,163.7 L430.4,146.2"/>
+<path class="leg rl" d="M430.4,146.2 L398.5,135.3"/>
+<path class="leg rl" d="M398.5,135.3 L441.5,163.7"/>
+<path class="leg rl" d="M441.5,163.7 L586.3,340.8"/>
+<path class="leg road" d="M586.3,340.8 L468.8,325.3"/>
+<path class="leg road" d="M468.8,325.3 L473.5,384.5"/>
+<path class="leg air" d="M473.5,384.5 Q228.5,266.2 63.8,49.6"/>
+<circle class="rbadge" cx="63.8" cy="49.6" r="11"/><text class="badge-n" x="63.8" y="53.9" text-anchor="middle">2</text>
+<text class="place" x="63.8" y="77.6" text-anchor="middle">LIMA</text>
+<circle class="rbadge" cx="430.4" cy="146.2" r="11"/><text class="badge-n" x="430.4" y="150.5" text-anchor="middle">2</text>
+<text class="place" x="445.4" y="151.2" text-anchor="start">SACRED VALLEY</text>
+<circle class="rbadge" cx="398.5" cy="135.3" r="11"/><text class="badge-n" x="398.5" y="139.6" text-anchor="middle">1</text>
+<text class="place" x="383.5" y="140.3" text-anchor="end">MACHU PICCHU</text>
+<circle class="rbadge" cx="441.5" cy="163.7" r="11"/><text class="badge-n" x="441.5" y="168.0" text-anchor="middle">2</text>
+<text class="place" x="456.5" y="168.7" text-anchor="start">CUSCO</text>
+<circle class="rbadge" cx="586.3" cy="340.8" r="11"/><text class="badge-n" x="586.3" y="345.1" text-anchor="middle">2</text>
+<text class="place" x="601.3" y="345.8" text-anchor="start">PUNO</text>
+<circle class="rbadge" cx="468.8" cy="325.3" r="11"/><text class="badge-n" x="468.8" y="329.6" text-anchor="middle">2</text>
+<text class="place" x="468.8" y="308.3" text-anchor="middle">COLCA CANYON</text>
+<circle class="rbadge" cx="473.5" cy="384.5" r="11"/><text class="badge-n" x="473.5" y="388.8" text-anchor="middle">2</text>
+<text class="place" x="473.5" y="412.5" text-anchor="middle">AREQUIPA</text>
+<g class="compass"><circle cx="606.0" cy="40" r="16"/><path d="M606.0,18 L611.0,40 L606.0,62 L601.0,40 Z"/><text x="606.0" y="13" text-anchor="middle">N</text></g>
+</svg><figcaption><span class="key-badge"><i>2</i>Nights stay</span><span class="lg"><svg width="28" height="8"><line x1="0" y1="4" x2="28" y2="4" class="leg rl"/></svg>By rail</span><span class="lg"><svg width="28" height="8"><line x1="0" y1="4" x2="28" y2="4" class="leg road"/></svg>By road</span><span class="lg"><svg width="28" height="8"><line x1="0" y1="4" x2="28" y2="4" class="leg air"/></svg>By air</span></figcaption></figure>
+ </div>
+ <ol class="route" aria-label="Route at a glance"><li><div class="stop"><b>Lima</b><span>2 nights</span></div></li><li><div class="stop"><b>Sacred Valley</b><span>2 nights</span></div></li><li><div class="stop"><b>Machu Picchu</b><span>1 night</span></div></li><li><div class="stop"><b>Cusco</b><span>2 nights</span></div></li><li><div class="stop"><b>Puno</b><span>2 nights</span></div></li><li><div class="stop"><b>Colca Canyon</b><span>2 nights</span></div></li><li><div class="stop"><b>Arequipa</b><span>2 nights</span></div></li></ol>
+</div></section>
+
+<section class="band"><div class="rw">
+ <span class="eyebrow">Trip Highlights</span><h2>What you'll remember</h2>
+ <ul class="hl reveal"><li>Ceviche and pisco sours in Lima, one of the world&#x27;s great food cities</li><li>Inca terraces and ruins across the Sacred Valley</li><li>Sunrise at Machu Picchu after a night at the only hotel at its gates</li><li>Cusco, the archaeological capital of the Americas</li><li>The Titicaca Train across the high Andes from Cusco to Puno</li><li>The floating reed islands and weaving traditions of Lake Titicaca</li><li>Andean condors soaring over the Colca Canyon</li><li>Arequipa, Peru&#x27;s elegant White City</li></ul>
+</div></section>
+
+<section class="page-break"><div class="rw">
+ <span class="eyebrow">Day by Day</span><h2>Your itinerary</h2>
+ <div class="days"><article class="day reveal"><div class="num"><small>Day</small><span>01</span></div>
+<div><div class="where">Lima</div><h3>Welcome to Peru</h3><p>A driver meets you at the airport and takes you to your hotel for two nights. The rest of the day is yours, and Miraflores is the perfect place to ease in with a walk along the clifftop Malecón and your first pisco sour.</p>
+<div class="meta"><span><b>Meals:</b> On your own</span><span><b>Stay options:</b> Miraflores Park, A Belmond Hotel · JW Marriott Hotel Lima · Country Club Lima Hotel · Pullman Lima Miraflores · Hilton Garden Inn Lima Miraflores</span></div></div></article><article class="day reveal"><div class="num"><small>Day</small><span>02</span></div>
+<div><div class="where">Lima</div><h3>Lima with Your Private Guide</h3><p>Spend the day getting to know the city with your private guide. You&#x27;ll see Plaza San Martín, the Plaza Mayor and the Government Palace, then step inside Casa de Aliaga, a family home with roots going back to 1535. Next is Museo Larco and its remarkable collection of pre-Columbian art, with lunch at Café del Museo in the museum&#x27;s gardens. Finish in bohemian Barranco, where street art, galleries and the Puente de los Suspiros set the mood.</p>
+<div class="meta"><span><b>Meals:</b> Breakfast, Lunch</span><span><b>Stay options:</b> Miraflores Park, A Belmond Hotel · JW Marriott Hotel Lima · Country Club Lima Hotel · Pullman Lima Miraflores · Hilton Garden Inn Lima Miraflores</span></div></div></article><article class="day reveal"><div class="num"><small>Day</small><span>03</span></div>
+<div><div class="where">Lima to the Sacred Valley</div><h3>Into the Inca Heartland</h3><p>Your driver takes you to the airport and helps with check-in for the short flight to Cusco, about an hour and twenty-five minutes. From there it&#x27;s roughly ninety minutes by road down into the Sacred Valley, with a stop at the Sulca textile museum, which recreates the fabrics of ancient Peru, and lunch at the historic Hacienda Huayoccari.</p>
+<div class="meta"><span><b>Meals:</b> Breakfast, Lunch</span><span><b>Stay:</b> Sacred Valley hotel matched to your style</span></div></div></article><article class="day reveal"><div class="num"><small>Day</small><span>04</span></div>
+<div><div class="where">Sacred Valley</div><h3>Maras Salt Pans &amp; Moray</h3><p>Today your guide takes you deeper into the valley. At the Maras salt pans, local families still harvest salt from hundreds of terraced pools, and the colors shift with the light. Nearby, the circular terraces of Moray are thought to have been an Inca agricultural laboratory, an observatory and a place of worship all at once. Lunch is a traditional meal with the community of Misminay before you return to your hotel.</p>
+<div class="meta"><span><b>Meals:</b> Breakfast, Lunch</span><span><b>Stay:</b> Sacred Valley hotel matched to your style</span></div></div></article><article class="day reveal"><div class="num"><small>Day</small><span>05</span></div>
+<div><div class="where">Sacred Valley to Machu Picchu</div><h3>The Lost City of the Incas</h3><p>After a short visit to the Inca fortress town of Ollantaytambo, board the train for one of Peru&#x27;s great rides, as the Andes give way to cloud forest on the way to Aguas Calientes. Your luggage is taken care of while a shuttle bus climbs to the citadel for a guided tour of Machu Picchu. Tonight you sleep right at its gates.</p>
+<div class="meta"><span><b>Meals:</b> Breakfast, Lunch</span><span><b>Stay:</b> Sanctuary Lodge, A Belmond Hotel, Machu Picchu</span></div></div></article><article class="day reveal"><div class="num"><small>Day</small><span>06</span></div>
+<div><div class="where">Machu Picchu to Cusco</div><h3>Sunrise Over Machu Picchu</h3><p>Set an early alarm, because sunrise over Machu Picchu is the moment people cross the world for. The day is yours to shape: wander the ruins at your own pace, climb Huayna Picchu for the view from above, or soak in the hot springs in Aguas Calientes. In the afternoon, a scenic train returns you to Cusco, where you&#x27;re met and taken to your hotel.</p>
+<div class="meta"><span><b>Meals:</b> Breakfast</span><span><b>Stay options:</b> Monasterio, A Belmond Hotel · Palacio Nazarenas, A Belmond Hotel · Aranwa Cusco Boutique Hotel · Hilton Garden Inn Cusco</span></div></div></article><article class="day reveal"><div class="num"><small>Day</small><span>07</span></div>
+<div><div class="where">Cusco</div><h3>The Archaeological Capital of the Americas</h3><p>Cusco&#x27;s cobblestone streets and original Inca walls make it one of the great archaeological cities in the world. Your tour includes Santo Domingo, built on the foundations of the Inca temple of Qorikancha, the San Cristóbal viewpoint, the fortress of Sacsayhuamán, the Inca baths of Tambomachay, and the Plaza de Armas and Cathedral. Freshen up at your hotel, then head back to the plaza for dinner.</p>
+<div class="meta"><span><b>Meals:</b> Breakfast</span><span><b>Stay options:</b> Monasterio, A Belmond Hotel · Palacio Nazarenas, A Belmond Hotel · Aranwa Cusco Boutique Hotel · Hilton Garden Inn Cusco</span></div></div></article><article class="day reveal"><div class="num"><small>Day</small><span>08</span></div>
+<div><div class="where">Cusco to Puno</div><h3>The Titicaca Train</h3><p>An early pickup takes you to Wanchaq Station, where local musicians send you off. The Titicaca Train is one of South America&#x27;s most scenic rail routes, with big windows and an open-air observation car for the high Andean plains. A three-course lunch with wine and afternoon tea are served in the Pullman-style dining cars, with live music along the way. You&#x27;re met in Puno and taken to your hotel.</p>
+<div class="meta"><span><b>Meals:</b> Breakfast, Lunch</span><span><b>Stay:</b> Casa Andina Premium Puno</span></div></div></article><article class="day reveal"><div class="num"><small>Day</small><span>09</span></div>
+<div><div class="where">Lake Titicaca</div><h3>Islands of the Highest Lake</h3><p>Head out by boat to the floating islands of the Uros, built by hand from layers of totora reeds. Continue to Taquile Island, where Quechua-speaking families are known for their extraordinary weaving and close-knit way of life. Lunch is served in a local home, followed by an easy walk through the hills and archaeological sites above the lake. Back in Puno, the evening is yours.</p>
+<div class="meta"><span><b>Meals:</b> Breakfast, Lunch</span><span><b>Stay:</b> Casa Andina Premium Puno</span></div></div></article><article class="day reveal"><div class="num"><small>Day</small><span>10</span></div>
+<div><div class="where">Puno to the Colca Canyon</div><h3>Across the Altiplano</h3><p>Today is a full travel day of about six hours, and it&#x27;s a beautiful one. You&#x27;ll cross the high plateau past the Lagunillas lagoons, home to Andean flamingos and local fishermen, and the Pampa Cañahuas in the Salinas y Aguada Blanca National Reserve, where vicuñas and alpacas graze. Lunch is in the town of Chivay, then it&#x27;s a short drive to the Colca Lodge for two nights.</p>
+<div class="meta"><span><b>Meals:</b> Breakfast, Lunch</span><span><b>Stay:</b> Colca Lodge</span></div></div></article><article class="day reveal"><div class="num"><small>Day</small><span>11</span></div>
+<div><div class="where">Colca Canyon</div><h3>Condors at Cruz del Cóndor</h3><p>An early start takes you to the Cruz del Cóndor viewpoint, where, with a little luck, Andean condors ride the morning thermals above one of the deepest canyons on Earth. On the way back, stop in villages ringed by terraces built by the pre-Inca Collagua people, including Maca at the foot of the Sabancaya volcano and Yanque with its baroque colonial church. Spend the afternoon slowing down at the lodge, and don&#x27;t skip the hot springs.</p>
+<div class="meta"><span><b>Meals:</b> Breakfast, Lunch</span><span><b>Stay:</b> Colca Lodge</span></div></div></article><article class="day reveal"><div class="num"><small>Day</small><span>12</span></div>
+<div><div class="where">Colca Canyon to Arequipa</div><h3>On to the White City</h3><p>After lunch in Chivay, it&#x27;s about three hours by road to Arequipa, with lookouts, highland villages and the open Pampa Cañahuas along the way. Settle into your hotel and enjoy your first evening in Peru&#x27;s White City, named for the pale volcanic stone its colonial center is built from.</p>
+<div class="meta"><span><b>Meals:</b> Breakfast, Lunch</span><span><b>Stay options:</b> Cirqa · Casa Andina Premium Arequipa · Casa Andina Select Arequipa Plaza</span></div></div></article><article class="day reveal"><div class="num"><small>Day</small><span>13</span></div>
+<div><div class="where">Arequipa</div><h3>Arequipa &amp; Santa Catalina</h3><p>Your private half-day tour starts in the Plaza de Armas, one of the loveliest squares in Peru, and the Cathedral, rebuilt in the 19th century and home to treasures in gold and silver. Visit the Jesuit Church of La Compañía, then step into the Santa Catalina Monastery, a walled city within the city founded in 1579 and closed to the outside world until 1970. Its brightly painted lanes, patios and cloisters are still home to a small community of nuns. The evening is yours.</p>
+<div class="meta"><span><b>Meals:</b> Breakfast</span><span><b>Stay options:</b> Cirqa · Casa Andina Premium Arequipa · Casa Andina Select Arequipa Plaza</span></div></div></article><article class="day reveal"><div class="num"><small>Day</small><span>14</span></div>
+<div><div class="where">Arequipa to Lima</div><h3>Homeward</h3><p>A driver takes you to the airport for your included flight to Lima, where you connect home or extend your trip. Ask me about adding the Amazon or a few beach days on the coast.</p>
+<div class="meta"><span><b>Meals:</b> Breakfast</span></div></div></article></div>
+</div></section>
+
+<section class="band"><div class="rw inc-grid">
+ <div><span class="eyebrow">What's Included</span><h2>Taken care of</h2>
+  <ul class="inc reveal"><li>Train to and from Machu Picchu</li><li>Cusco to Puno aboard the Titicaca Train</li><li>2 nights in Lima with breakfast</li><li>2 nights in the Sacred Valley with breakfast</li><li>1 night at Machu Picchu with breakfast</li><li>2 nights in Cusco with breakfast</li><li>2 nights in Puno with breakfast</li><li>2 nights at the Colca Lodge with breakfast</li><li>2 nights in Arequipa with breakfast</li><li>Full-day private city tour of Lima</li><li>Full-day private tour of the Maras salt pans and Moray terraces, with lunch</li><li>Afternoon and morning visits to Machu Picchu, entrance fees included</li><li>Half-day private tour of Cusco and nearby archaeological sites</li><li>Full-day private tour of Lake Titicaca and its islands</li><li>Private transfer from Puno to the Colca Canyon</li><li>Half-day private tour of the Colca Canyon</li><li>Private scenic transfer from Colca to Arequipa, with lunch</li><li>Half-day private tour of Arequipa and the Santa Catalina Monastery</li><li>Flights from Lima to Cusco and Arequipa to Lima</li><li>All private airport, hotel and station transfers</li></ul></div>
+ <aside class="tip reveal"><span class="eyebrow">Krystal's Tip</span><h3>Planning around the altitude</h3><p>Cusco sits around 11,150 feet and Puno around 12,550, so altitude is the one thing worth planning for. This route starts lower in the Sacred Valley to help you adjust. Keep your first afternoon up high easy, drink plenty of water, and talk with your doctor about altitude medication before you go. Machu Picchu and Huayna Picchu permits are limited and sell out, so booking early gets you the best entry times.</p></aside>
+</div></section>
+
+<section class="cta"><svg class="rcont" viewBox="0 0 1200 500" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><g fill="none" stroke="#C8A24B" stroke-width="1"><polyline points="0,49.5 20,43.2 40,36.8 60,30.6 80,24.6 100,19.0 120,14.0 140,9.6 160,6.0 180,3.2 200,1.3 220,0.2 240,0.1 260,0.8 280,2.4 300,4.7 320,7.7 340,11.4 360,15.4 380,19.9 400,24.6 420,29.3 440,34.1 460,38.6 480,42.9 500,46.8 520,50.2 540,53.1 560,55.3 580,56.9 600,57.8 620,58.0 640,57.5 660,56.4 680,54.7 700,52.5 720,49.9 740,46.9 760,43.6 780,40.2 800,36.7 820,33.3 840,30.0 860,26.9 880,24.2 900,21.9 920,20.0 940,18.6 960,17.8 980,17.5 1000,17.7 1020,18.6 1040,19.9 1060,21.7 1080,23.9 1100,26.6 1120,29.5 1140,32.7 1160,36.1 1180,39.5 1200,43.0 1220,46.4"/><polyline points="0,64.1 20,64.1 40,64.4 60,65.1 80,66.1 100,67.4 120,68.9 140,70.8 160,72.9 180,75.2 200,77.7 220,80.4 240,83.2 260,86.1 280,89.2 300,92.2 320,95.4 340,98.4 360,101.5 380,104.5 400,107.4 420,110.2 440,112.8 460,115.3 480,117.6 500,119.7 520,121.6 540,123.2 560,124.6 580,125.8 600,126.6 620,127.3 640,127.6 660,127.7 680,127.5 700,127.0 720,126.3 740,125.4 760,124.2 780,122.8 800,121.1 820,119.3 840,117.3 860,115.1 880,112.8 900,110.4 920,107.8 940,105.2 960,102.4 980,99.7 1000,96.8 1020,94.0 1040,91.2 1060,88.4 1080,85.6 1100,82.9 1120,80.3 1140,77.8 1160,75.4 1180,73.1 1200,71.0 1220,69.0"/><polyline points="0,167.5 20,169.9 40,172.1 60,174.0 80,175.5 100,176.7 120,177.6 140,178.1 160,178.3 180,178.1 200,177.6 220,176.7 240,175.5 260,174.0 280,172.3 300,170.2 320,167.9 340,165.4 360,162.7 380,159.9 400,156.9 420,153.8 440,150.7 460,147.6 480,144.5 500,141.4 520,138.4 540,135.5 560,132.8 580,130.2 600,127.8 620,125.7 640,123.7 660,122.1 680,120.7 700,119.5 720,118.6 740,118.1 760,117.8 780,117.7 800,117.9 820,118.4 840,119.1 860,120.1 880,121.2 900,122.5 920,123.9 940,125.5 960,127.2 980,128.9 1000,130.6 1020,132.4 1040,134.1 1060,135.7 1080,137.3 1100,138.7 1120,140.0 1140,141.1 1160,142.1 1180,142.8 1200,143.3 1220,143.6"/><polyline points="0,162.0 20,165.5 40,169.1 60,172.6 80,176.1 100,179.5 120,182.8 140,185.9 160,188.8 180,191.5 200,193.9 220,196.0 240,197.9 260,199.4 280,200.6 300,201.5 320,202.1 340,202.3 360,202.2 380,201.9 400,201.2 420,200.4 440,199.3 460,198.0 480,196.5 500,194.9 520,193.3 540,191.6 560,189.8 580,188.2 600,186.5 620,185.0 640,183.6 660,182.4 680,181.4 700,180.5 720,180.0 740,179.7 760,179.6 780,179.8 800,180.4 820,181.1 840,182.2 860,183.5 880,185.1 900,186.9 920,188.9 940,191.1 960,193.4 980,195.9 1000,198.4 1020,200.9 1040,203.5 1060,206.0 1080,208.5 1100,210.8 1120,213.0 1140,215.0 1160,216.8 1180,218.4 1200,219.7 1220,220.6"/><polyline points="0,239.7 20,241.0 40,242.2 60,243.4 80,244.5 100,245.5 120,246.6 140,247.7 160,248.9 180,250.1 200,251.3 220,252.6 240,253.9 260,255.3 280,256.7 300,258.0 320,259.4 340,260.7 360,261.9 380,263.0 400,263.9 420,264.6 440,265.1 460,265.3 480,265.2 500,264.9 520,264.2 540,263.1 560,261.7 580,259.9 600,257.8 620,255.3 640,252.6 660,249.5 680,246.2 700,242.7 720,239.0 740,235.2 760,231.3 780,227.4 800,223.5 820,219.7 840,216.0 860,212.5 880,209.3 900,206.3 920,203.5 940,201.1 960,199.1 980,197.4 1000,196.0 1020,195.0 1040,194.4 1060,194.1 1080,194.1 1100,194.3 1120,194.9 1140,195.6 1160,196.6 1180,197.7 1200,198.9 1220,200.1"/><polyline points="0,290.8 20,294.3 40,297.4 60,300.1 80,302.2 100,303.8 120,304.7 140,305.1 160,304.9 180,304.0 200,302.5 220,300.5 240,298.0 260,294.9 280,291.4 300,287.6 320,283.5 340,279.2 360,274.7 380,270.2 400,265.7 420,261.4 440,257.2 460,253.4 480,249.9 500,246.9 520,244.3 540,242.3 560,240.8 580,240.0 600,239.7 620,240.1 640,241.2 660,242.8 680,245.0 700,247.7 720,250.9 740,254.6 760,258.5 780,262.8 800,267.3 820,271.8 840,276.4 860,280.9 880,285.3 900,289.5 920,293.3 940,296.7 960,299.7 980,302.2 1000,304.1 1020,305.5 1040,306.2 1060,306.3 1080,305.7 1100,304.5 1120,302.7 1140,300.3 1160,297.4 1180,294.1 1200,290.3 1220,286.1"/><polyline points="0,274.7 20,268.6 40,263.1 60,258.4 80,254.5 100,251.6 120,249.8 140,249.2 160,249.7 180,251.4 200,254.4 220,258.6 240,264.0 260,270.4 280,278.0 300,286.4 320,295.6 340,305.4 360,315.7 380,326.3 400,336.9 420,347.5 440,357.7 460,367.5 480,376.5 500,384.7 520,391.8 540,397.7 560,402.3 580,405.4 600,407.1 620,407.1 640,405.5 660,402.4 680,397.6 700,391.4 720,383.8 740,374.9 760,364.9 780,354.0 800,342.3 820,330.0 840,317.5 860,304.8 880,292.4 900,280.3 920,268.8 940,258.1 960,248.5 980,240.0 1000,233.0 1020,227.5 1040,223.5 1060,221.3 1080,220.9 1100,222.1 1120,225.2 1140,229.8 1160,236.1 1180,243.9 1200,253.0 1220,263.2"/><polyline points="0,362.3 20,365.0 40,367.9 60,371.0 80,374.2 100,377.3 120,380.3 140,383.0 160,385.4 180,387.3 200,388.7 220,389.5 240,389.6 260,389.1 280,387.8 300,385.7 320,383.0 340,379.6 360,375.6 380,371.1 400,366.2 420,361.0 440,355.7 460,350.4 480,345.2 500,340.4 520,335.9 540,332.1 560,328.9 580,326.6 600,325.2 620,324.7 640,325.3 660,326.8 680,329.4 700,332.9 720,337.3 740,342.5 760,348.4 780,354.8 800,361.6 820,368.5 840,375.5 860,382.3 880,388.7 900,394.6 920,399.8 940,404.1 960,407.5 980,409.7 1000,410.9 1020,410.8 1040,409.5 1060,407.0 1080,403.4 1100,398.8 1120,393.1 1140,386.7 1160,379.7 1180,372.2 1200,364.4 1220,356.5"/><polyline points="0,376.3 20,376.8 40,377.6 60,378.7 80,380.1 100,381.8 120,383.8 140,385.9 160,388.2 180,390.7 200,393.2 220,395.8 240,398.5 260,401.1 280,403.7 300,406.1 320,408.5 340,410.7 360,412.7 380,414.6 400,416.2 420,417.6 440,418.7 460,419.6 480,420.3 500,420.7 520,420.9 540,420.8 560,420.5 580,420.1 600,419.5 620,418.7 640,417.9 660,417.0 680,416.0 700,415.0 720,414.0 740,413.1 760,412.3 780,411.6 800,411.0 820,410.6 840,410.3 860,410.3 880,410.4 900,410.8 920,411.3 940,412.1 960,413.1 980,414.3 1000,415.6 1020,417.1 1040,418.6 1060,420.3 1080,422.0 1100,423.7 1120,425.3 1140,426.9 1160,428.4 1180,429.7 1200,430.7 1220,431.6"/><polyline points="0,469.4 20,470.5 40,471.5 60,472.3 80,472.9 100,473.4 120,473.8 140,473.9 160,473.9 180,473.6 200,473.2 220,472.6 240,471.8 260,470.9 280,469.7 300,468.4 320,466.9 340,465.3 360,463.5 380,461.6 400,459.6 420,457.4 440,455.3 460,453.0 480,450.7 500,448.5 520,446.2 540,444.0 560,441.9 580,439.8 600,437.9 620,436.2 640,434.6 660,433.2 680,432.1 700,431.2 720,430.5 740,430.1 760,430.1 780,430.3 800,430.8 820,431.6 840,432.7 860,434.1 880,435.8 900,437.7 920,439.9 940,442.3 960,444.9 980,447.7 1000,450.5 1020,453.5 1040,456.6 1060,459.6 1080,462.7 1100,465.7 1120,468.5 1140,471.3 1160,473.8 1180,476.2 1200,478.2 1220,480.0"/></g></svg><div class="rw">
+ <span class="eyebrow">Let's Plan It</span>
+ <h2>Make this trip yours</h2>
+ <div class="rprice">From $9,639<small>Per person</small></div>
+ <p class="rfine">Final pricing depends on your travel dates, hotel choices and room type. Every itinerary can be tailored, from upgrading your hotels to adding days.</p>
+ <div class="btns"><a class="rbtn rsolid" href="contact.html?trip=Classic%20Peru#inquiry">Plan this with Krystal</a>
+  <a class="rbtn rghost" href="tel:+18168095291">816.809.5291</a></div>
+ <p class="person"><b>Krystal Winchel</b>Founder · Traveling the Atlas · <a href="mailto:Krystal@travelingta.com" style="color:inherit">Krystal@travelingta.com</a></p>
+</div></section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="f-top">
+      <div>
+        <a class="brand" href="index.html"><span>Traveling the Atlas</span></a>
+        <p class="f-tag">Stop saving life for someday.</p>
+      </div>
+      <ul class="f-links">
+        <li><a href="about.html">ABOUT</a></li>
+        <li><a href="services.html">SERVICES</a></li>
+      <li><a href="trips.html">TRIPS</a></li>
+        <li><a href="gallery.html">GALLERY</a></li>
+        <li><a href="blog.html">JOURNAL</a></li>
+        <li><a href="contact.html">CONTACT</a></li>
+      </ul>
+    </div>
+    <div class="legal">
+      <div class="row">
+        <span class="badges"><img class="gtn" src="images/gtn-virtuoso.png" alt="An independent affiliate of Gifted Travel Network"><a href="https://www.virtuoso.com/about" class="vir"><img src="images/virtuoso-member.png" alt="Virtuoso Member"></a></span>
+        <span>Traveling the Atlas, LLC is an independent affiliate of Gifted Travel Network, a Virtuoso&reg; Member.</span>
+      </div>
+      <p>Within the United States, VIRTUOSO, the Globe Swirl Logo, SPECIALISTS IN THE ART OF TRAVEL, RETURN on LIFE, and ORCHESTRATE DREAMS are registered trademarks of Virtuoso, Ltd., and VIRTUOSO VOYAGES is a trademark of Virtuoso, Ltd. Virtuoso, Ltd. has a U.S. copyright registration for the Globe Swirl Logo, &copy; 2000. Outside of the U.S., these marks are the property of Virtuoso, Ltd., and the applicable marks are registered with numerous national trademark registries around the world. All rights reserved.</p>
+      <p><a href="terms.html">Terms &amp; Conditions</a> &nbsp;|&nbsp; <a href="privacy.html">Privacy Policy</a> &nbsp;|&nbsp; <a href="travel-info.html">Travel Information</a></p>
+      <p>&copy; 2026 Traveling the Atlas LLC &nbsp;|&nbsp; <a href="mailto:Krystal@travelingta.com">Krystal@travelingta.com</a> &nbsp;|&nbsp; <a href="tel:+18168095291">816.809.5291</a></p>
+    </div>
+  </div>
+</footer><script>
+(function(){
+  var els=document.querySelectorAll('.rail .reveal,.rail .mapfig');
+  if(!('IntersectionObserver' in window)){els.forEach(function(e){e.classList.add('on')});return;}
+  var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('on');io.unobserve(e.target);}})},{threshold:.12});
+  els.forEach(function(e){io.observe(e)});
+})();
+</script>
+
+
+<script>
+(function(){
+  var nav=document.getElementById('nav');
+  function onScroll(){ nav.classList.toggle('solid', window.scrollY > 60); }
+  window.addEventListener('scroll', onScroll, {passive:true}); onScroll();
+  var toggle=document.getElementById('toggle'), menu=document.getElementById('menu');
+  toggle.addEventListener('click', function(){
+    var open=menu.classList.toggle('open');
+    toggle.setAttribute('aria-expanded', open);
+    toggle.innerHTML = open ? '&times;' : '&#9776;';
+    document.body.style.overflow = open ? 'hidden' : '';
+  });
+  menu.querySelectorAll('a').forEach(function(a){ a.addEventListener('click', function(){ if(menu.classList.contains('open')) toggle.click(); }); });
+})();
+</script>
+<!-- Traveling the Atlas sign-up popup -->
+<div id="tta-pop" role="dialog" aria-modal="true" aria-labelledby="tta-pop-title" hidden>
+  <div class="tta-card">
+    <button type="button" class="tta-x" id="tta-pop-close" aria-label="Close">&times;</button>
+    <div class="tta-photo" aria-hidden="true"></div>
+    <div class="tta-body">
+      <p class="tta-label">The Atlas list</p>
+      <h2 id="tta-pop-title">Be first to know.</h2>
+      <p class="tta-sub">Get my free guide, <em>Hidden Gems Worth Flying For</em>, plus first access to exclusive offers, Virtuoso perks and new trips before anyone else.</p>
+      <form id="tta-pop-form" novalidate>
+        <label class="tta-field"><span>First name</span><input type="text" name="name" autocomplete="given-name" required></label>
+        <label class="tta-field"><span>Email</span><input type="email" name="email" autocomplete="email" required></label>
+        <input type="text" name="website" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0">
+        <button type="submit" class="tta-btn">SEND ME THE GUIDE</button>
+        <p class="tta-err" id="tta-pop-err" role="alert"></p>
+      </form>
+      <div class="tta-done" id="tta-pop-done" hidden>
+        <h3>You're on the list.</h3>
+        <p>Watch your inbox for the guide. I can't wait to show you what's out there.</p>
+        <p class="tta-sig">Krystal</p>
+      </div>
+      <p class="tta-fine">No spam, ever. Unsubscribe anytime. See our <a href="privacy.html">Privacy Policy</a>.</p>
+    </div>
+  </div>
+</div>
+<style>
+#tta-pop{position:fixed;inset:0;z-index:200;display:flex;align-items:center;justify-content:center;padding:20px;background:rgba(13,27,42,.72);backdrop-filter:blur(4px);opacity:0;transition:opacity .6s cubic-bezier(.22,.61,.36,1)}
+#tta-pop[hidden]{display:none}
+#tta-pop.on{opacity:1}
+#tta-pop .tta-card{position:relative;display:grid;grid-template-columns:.9fr 1.1fr;max-width:820px;width:100%;background:#F8F5F0;box-shadow:0 40px 90px rgba(0,0,0,.45);transform:translateY(24px) scale(.98);transition:transform .7s cubic-bezier(.22,.61,.36,1)}
+#tta-pop.on .tta-card{transform:none}
+#tta-pop .tta-photo{background:#1F345D url("images/villa.jpg") center/cover no-repeat;min-height:100%}
+#tta-pop .tta-body{padding:48px 44px 34px;border-top:2px solid #C8A24B}
+#tta-pop .tta-x{position:absolute;top:10px;right:10px;z-index:2;width:40px;height:40px;border-radius:50%;background:rgba(248,245,240,.92);border:0;font-size:1.7rem;line-height:1;color:#1F345D;cursor:pointer;display:grid;place-items:center}
+#tta-pop .tta-label{font:500 .74rem/1 "Montserrat",sans-serif;letter-spacing:.14em;color:#C8A24B;margin:0 0 1rem}
+#tta-pop h2{font:400 2.5rem/1.05 "Cormorant Garamond",Georgia,serif;color:#0D1B2A;margin:0 0 1rem}
+#tta-pop .tta-sub{font:400 .98rem/1.6 "Lato",sans-serif;color:#333;margin:0 0 1.5rem}
+#tta-pop .tta-field{display:block;margin:0 0 .9rem}
+#tta-pop .tta-field span{display:block;font:600 .66rem/1 "Montserrat",sans-serif;letter-spacing:.14em;text-transform:uppercase;color:#1F345D;margin:0 0 .45rem}
+#tta-pop input{width:100%;box-sizing:border-box;font:400 1rem "Lato",sans-serif;padding:.85rem .9rem;border:1px solid rgba(13,27,42,.22);background:#fff;color:#0D1B2A;border-radius:0}
+#tta-pop input:focus{outline:2px solid #C8A24B;outline-offset:1px;border-color:#C8A24B}
+#tta-pop .tta-btn{width:100%;margin-top:.4rem;font:600 .8rem/1 "Montserrat",sans-serif;letter-spacing:.12em;padding:1.1rem;background:#C8A24B;color:#0D1B2A;border:1px solid #C8A24B;cursor:pointer;transition:background .4s,color .4s}
+#tta-pop .tta-btn:hover{background:#0D1B2A;color:#C8A24B}
+#tta-pop .tta-btn[disabled]{opacity:.6;cursor:wait}
+#tta-pop .tta-err{color:#a3341f;font:400 .85rem "Lato",sans-serif;margin:.6rem 0 0;min-height:1em}
+#tta-pop .tta-done h3{font:400 2rem/1.1 "Cormorant Garamond",Georgia,serif;color:#0D1B2A;margin:0 0 .6rem}
+#tta-pop .tta-done p{font:400 1rem/1.6 "Lato",sans-serif;color:#333;margin:0 0 .6rem}
+#tta-pop .tta-sig{font:italic 1.4rem "Cormorant Garamond",Georgia,serif!important;color:#1F345D!important}
+#tta-pop .tta-fine{font:400 .78rem/1.5 "Lato",sans-serif;color:#777;margin:1.2rem 0 0}
+#tta-pop .tta-fine a{color:#1F345D}
+@media (max-width:700px){#tta-pop .tta-card{grid-template-columns:1fr;max-height:92vh;overflow:auto}#tta-pop .tta-photo{min-height:150px}#tta-pop .tta-body{padding:30px 24px 24px}#tta-pop h2{font-size:2rem}}
+@media (prefers-reduced-motion:reduce){#tta-pop,#tta-pop .tta-card{transition:none}}
+</style>
+<script>
+(function(){
+  /* Sign-ups go to Krystal's "Lead Mag Pop Up" Google Sheet through this script link. */
+  var SCRIPT_URL = "https://script.google.com/macros/s/AKfycbyCKltg2lE90SLLH5Rb9tTdUi7QfccvnGEZh2HQvBRw85wt_oCOuIaskbGRaUC5RHHLTg/exec";
+  var SHOW_AFTER_MS = 6000;
+  var KEY = 'tta_list_seen';
+  var pop=document.getElementById('tta-pop'); if(!pop) return;
+  var force=/[?&]popup=1/.test(location.search);
+  try{ if(!force && localStorage.getItem(KEY)) return; }catch(e){}
+  var form=document.getElementById('tta-pop-form'), err=document.getElementById('tta-pop-err'), done=document.getElementById('tta-pop-done'), last=null;
+  function remember(){ try{ localStorage.setItem(KEY, String(Date.now())); }catch(e){} }
+  function open(){ last=document.activeElement; pop.hidden=false; void pop.offsetWidth; pop.classList.add('on'); var f=pop.querySelector('input'); if(f) f.focus({preventScroll:true}); }
+  function close(){ remember(); pop.classList.remove('on'); setTimeout(function(){ pop.hidden=true; if(last&&last.focus) last.focus(); },500); }
+  setTimeout(open, force?300:SHOW_AFTER_MS);
+  document.getElementById('tta-pop-close').addEventListener('click', close);
+  pop.addEventListener('click', function(e){ if(e.target===pop) close(); });
+  document.addEventListener('keydown', function(e){ if(e.key==='Escape' && !pop.hidden) close(); });
+  form.addEventListener('submit', function(e){
+    e.preventDefault(); err.textContent='';
+    var name=form.elements['name'].value.trim(), email=form.elements['email'].value.trim();
+    if(!name){ err.textContent='Please add your first name.'; form.elements['name'].focus(); return; }
+    if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)){ err.textContent='Please check your email address.'; form.elements['email'].focus(); return; }
+    var btn=form.querySelector('button'); btn.disabled=true; btn.textContent='SENDING';
+    var data=new URLSearchParams(); data.append('name',name); data.append('email',email); data.append('website',form.elements['website'].value);
+    var send = fetch(SCRIPT_URL,{method:'POST',mode:'no-cors',body:data});
+    send.then(function(){ form.hidden=true; done.hidden=false; remember(); })
+        .catch(function(){ btn.disabled=false; btn.textContent='SEND ME THE GUIDE'; err.textContent='Something went wrong. Please try again, or email Krystal@travelingta.com.'; });
+  });
+})();
+</script>
+
+</body>
+</html>

@@ -269,7 +269,7 @@ footer{background:var(--deep);color:rgba(255,255,255,.6);padding:72px 0 40px;fon
 .t-btns .btn{width:100%;text-align:center;padding:1rem}
 .t-link{font:600 .7rem/1 var(--sans);letter-spacing:.14em;color:var(--navy);text-decoration:none;border-bottom:1px solid var(--gold);padding-bottom:4px}
 .t-link:hover{color:var(--gold)}
-.colls-wrap{margin-top:clamp(70px,8vw,100px)}
+.colls-wrap,#rail-sec{margin-top:clamp(70px,8vw,100px)}
 .colls{display:grid;gap:24px}
 .coll{display:grid;grid-template-columns:minmax(280px,420px) 1fr}
 .c-photo{min-height:280px;position:relative;overflow:hidden;background:var(--navy)}
@@ -279,6 +279,8 @@ footer{background:var(--deep);color:rgba(255,255,255,.6);padding:72px 0 40px;fon
 .regions{font:500 .68rem/1.8 var(--sans);letter-spacing:.12em;color:var(--navy);margin:0 0 1.4rem}
 .t-btns.row{flex-direction:row;align-items:center;gap:24px;flex-wrap:wrap}
 .t-btns.row .btn{width:auto;padding:1rem 1.6rem}
+.t-btns .btn-line{color:var(--deep);border-color:rgba(13,27,42,.35)}
+.t-btns .btn-line:hover{color:var(--deep);border-color:var(--gold);background:rgba(200,162,75,.12)}
 .note{font-size:.85rem;color:#777;margin-top:34px;max-width:52rem}
 .empty{color:#777}
 @media (max-width:960px){.trips{grid-template-columns:1fr 1fr}.coll{grid-template-columns:1fr}.c-photo{min-height:220px}}
@@ -326,6 +328,11 @@ footer{background:var(--deep);color:rgba(255,255,255,.6);padding:72px 0 40px;fon
       <h2 class="sec-h">Krystal's picks right now</h2>
       <p class="sec-p">A few favorites I'd book for myself.</p>
       <div class="trips" id="picks"><p class="empty">Loading trips.</p></div>
+    </section>
+    <section id="rail-sec">
+      <h2 class="sec-h">Luxury rail</h2>
+      <p class="sec-p">Some of the world's great train trips, with full day-by-day itineraries.</p>
+      <div class="trips" id="rail"></div>
     </section>
     <section class="colls-wrap" id="colls-sec">
       <h2 class="sec-h">Browse full collections</h2>
@@ -407,15 +414,19 @@ var LOCAL_CSV_URL = "data/trips.csv";
     var shown=list.filter(function(t){ return (t.show||'yes').toLowerCase()!=='no'; });
     var picks=shown.filter(function(t){ return (t.section||'').toLowerCase()==='pick'; });
     var colls=shown.filter(function(t){ return (t.section||'').toLowerCase()==='collection'; });
-    document.getElementById('picks').innerHTML = picks.map(function(t){
+    function card(t){
       var meta=[t.destination, t.days ? t.days+' days' : '', t.dates].filter(Boolean).map(function(x){ return esc(x).toUpperCase(); }).join(' &nbsp;|&nbsp; ');
-      var img=safeUrl(t.photo), link=safeUrl(t.itinerary_link);
+      var img=safeUrl(t.photo), page=/^[\w-]+\.html$/.test(t.page||'') ? t.page : '';
       return '<article class="trip"><div class="t-photo">'+(img?'<img src="'+esc(img)+'" alt="" loading="lazy">':'')+(t.tag?'<span class="t-tag">'+esc(t.tag).toUpperCase()+'</span>':'')+'</div>'+
         '<div class="t-body"><p class="t-meta">'+meta+'</p><h3>'+esc(t.title)+'</h3><p class="t-desc">'+esc(t.description)+'</p>'+
         '<div class="t-foot">'+(t.price?'<p class="t-price"><small>FROM</small>'+esc(t.price)+'<small>PER PERSON</small></p>':'')+
-        '<div class="t-btns"><a class="btn btn-gold" href="'+ask(t.title)+'">PLAN THIS WITH KRYSTAL</a>'+
+        '<div class="t-btns">'+(page?'<a class="btn btn-line" href="'+esc(page)+'">SEE THE ITINERARY</a>':'')+'<a class="btn btn-gold" href="'+ask(t.title)+'">PLAN THIS WITH KRYSTAL</a>'+
         '</div></div></div></article>';
-    }).join('');
+    }
+    var rail=shown.filter(function(t){ return (t.section||'').toLowerCase()==='rail'; });
+    document.getElementById('picks').innerHTML = picks.map(card).join('');
+    document.getElementById('rail').innerHTML = rail.map(card).join('');
+    document.getElementById('rail-sec').style.display = rail.length ? '' : 'none';
     document.getElementById('picks-sec').style.display = picks.length ? '' : 'none';
     document.getElementById('colls').innerHTML = colls.map(function(t){
       var img=safeUrl(t.photo), link=safeUrl(t.itinerary_link);
